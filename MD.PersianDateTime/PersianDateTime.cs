@@ -582,7 +582,10 @@ namespace MD.PersianDateTime
 
 		#region ctor
 
-		public PersianDateTime(SerializationInfo info, StreamingContext context) : this()
+		/// <summary>
+		/// متد سازنده برای دی سریالایز شدن
+		/// </summary>
+		private PersianDateTime(SerializationInfo info, StreamingContext context) : this()
 		{
 			_dateTime = info.GetDateTime("DateTime");
 			EnglishNumber = info.GetBoolean("EnglishNumber");
@@ -1014,7 +1017,7 @@ namespace MD.PersianDateTime
 		/// <summary>
 		/// پارس کردن یک رشته برای یافتن تاریخ شمسی
 		/// </summary>
-		public static bool TryParse(string persianDateTimeInString, out PersianDateTime? result)
+		public static bool TryParse(string persianDateTimeInString, out PersianDateTime? result, string dateSeperatorPattern = @"\/|-")
 		{
 			if (string.IsNullOrEmpty(persianDateTimeInString))
 			{
@@ -1023,7 +1026,7 @@ namespace MD.PersianDateTime
 			}
 			try
 			{
-				result = Parse(persianDateTimeInString);
+				result = Parse(persianDateTimeInString, dateSeperatorPattern);
 				return true;
 			}
 			catch

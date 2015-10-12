@@ -10,12 +10,12 @@ namespace ConsoleApplication1
 	{
 		private static void Main(string[] args)
 		{
-			PersianDateTime persianDateTime = PersianDateTime.Parse("1394-02-02 12:40:50:312");
+			PersianDateTime persianDateTime = PersianDateTime.Parse("1394/02/02 12:40:50:312");
 			persianDateTime.EnglishNumber = true;
 			string serializedPersianDateTime = JsonConvert.SerializeObject(persianDateTime);
 
 			PersianDateTime persianDateTime1 = JsonConvert.DeserializeObject<PersianDateTime>(serializedPersianDateTime);
-			Console.WriteLine(persianDateTime1.ToString("yyyy/MM/dd HH:hh:mm:fff"));
+			Console.WriteLine(persianDateTime1.ToString("yyyy/MM/dd   HH:mm:ss:fff"));
 
 			persianDateTime = PersianDateTime.Parse(13901229);
 			persianDateTime.EnglishNumber = true;
