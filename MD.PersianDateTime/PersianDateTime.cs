@@ -876,7 +876,8 @@ namespace MD.PersianDateTime
 
 		public bool Equals(PersianDateTime other)
 		{
-			return this == other;
+			return this.Year == other.Year && this.Month == other.Month && this.Day == other.Day &&
+				this.Hour == other.Hour && this.Minute == other.Minute && this.Second == other.Second && this.MiliSecond == other.MiliSecond;
 		}
 
 		public bool Equals(DateTime other)

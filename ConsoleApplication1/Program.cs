@@ -14,88 +14,92 @@ namespace ConsoleApplication1
 			persianDateTime.EnglishNumber = true;
 			string serializedPersianDateTime = JsonConvert.SerializeObject(persianDateTime);
 
-			PersianDateTime persianDateTime1 = JsonConvert.DeserializeObject<PersianDateTime>(serializedPersianDateTime);
-			Console.WriteLine(persianDateTime1.ToString("yyyy/MM/dd   HH:mm:ss:fff"));
+			var persianDateTime2 = PersianDateTime.Parse(13901229);
+			var dateTIme1 = persianDateTime2.ToDateTime();
+			Console.WriteLine(dateTIme1 == persianDateTime2);
 
-			persianDateTime = PersianDateTime.Parse(13901229);
-			persianDateTime.EnglishNumber = true;
-			persianDateTime = persianDateTime.AddDays(2);
-			Console.WriteLine(persianDateTime);
+			//PersianDateTime persianDateTime1 = JsonConvert.DeserializeObject<PersianDateTime>(serializedPersianDateTime);
+			//Console.WriteLine(persianDateTime1.ToString("yyyy/MM/dd   HH:mm:ss:fff"));
 
-			persianDateTime = PersianDateTime.Parse("چهارشنبه، ۱۰ دی ۱۳۹۳ ۱۲:۳۸");
-			persianDateTime.EnglishNumber = true;
-			Console.WriteLine(persianDateTime);
+			//persianDateTime = PersianDateTime.Parse(13901229);
+			//persianDateTime.EnglishNumber = true;
+			//persianDateTime = persianDateTime.AddDays(2);
+			//Console.WriteLine(persianDateTime);
 
-			persianDateTime = PersianDateTime.Parse("دوشنبه 24 آذر 1393 ساعت 3:59:3 ب.ظ");
-			persianDateTime.EnglishNumber = true;
-			Console.WriteLine(persianDateTime);
+			//persianDateTime = PersianDateTime.Parse("چهارشنبه، ۱۰ دی ۱۳۹۳ ۱۲:۳۸");
+			//persianDateTime.EnglishNumber = true;
+			//Console.WriteLine(persianDateTime);
 
-			persianDateTime = PersianDateTime.Parse("24 آذر 1393");
-			persianDateTime.EnglishNumber = true;
-			Console.WriteLine(persianDateTime);
+			//persianDateTime = PersianDateTime.Parse("دوشنبه 24 آذر 1393 ساعت 3:59:3 ب.ظ");
+			//persianDateTime.EnglishNumber = true;
+			//Console.WriteLine(persianDateTime);
 
-			persianDateTime = PersianDateTime.Parse("د 24 آذر 1393 4:2:5:5 ب.ظ");
-			persianDateTime.EnglishNumber = true;
-			Console.WriteLine(persianDateTime);
+			//persianDateTime = PersianDateTime.Parse("24 آذر 1393");
+			//persianDateTime.EnglishNumber = true;
+			//Console.WriteLine(persianDateTime);
 
-			persianDateTime = PersianDateTime.Parse("1393/02/01");
-			persianDateTime.EnglishNumber = true;
-			Console.WriteLine(persianDateTime);
+			//persianDateTime = PersianDateTime.Parse("د 24 آذر 1393 4:2:5:5 ب.ظ");
+			//persianDateTime.EnglishNumber = true;
+			//Console.WriteLine(persianDateTime);
 
-			persianDateTime = PersianDateTime.Parse("1393/02/01 02:03");
-			persianDateTime.EnglishNumber = true;
-			Console.WriteLine(persianDateTime);
+			//persianDateTime = PersianDateTime.Parse("1393/02/01");
+			//persianDateTime.EnglishNumber = true;
+			//Console.WriteLine(persianDateTime);
 
-			persianDateTime = PersianDateTime.Parse("1393/02/01 02:03:10:30");
-			persianDateTime.EnglishNumber = true;
-			Console.WriteLine(persianDateTime);
+			//persianDateTime = PersianDateTime.Parse("1393/02/01 02:03");
+			//persianDateTime.EnglishNumber = true;
+			//Console.WriteLine(persianDateTime);
 
-			persianDateTime = PersianDateTime.Parse("93/1/1 3:15 ب.ظ");
-			persianDateTime.EnglishNumber = true;
-			Console.WriteLine(persianDateTime);
+			//persianDateTime = PersianDateTime.Parse("1393/02/01 02:03:10:30");
+			//persianDateTime.EnglishNumber = true;
+			//Console.WriteLine(persianDateTime);
 
-			persianDateTime = PersianDateTime.Parse("جمعه 93/2/1 ساعت 3:2 ب.ظ");
-			persianDateTime.EnglishNumber = true;
-			Console.WriteLine(persianDateTime);
+			//persianDateTime = PersianDateTime.Parse("93/1/1 3:15 ب.ظ");
+			//persianDateTime.EnglishNumber = true;
+			//Console.WriteLine(persianDateTime);
 
-			persianDateTime = new PersianDateTime(DateTime.Now.AddDays(-8)) {EnglishNumber = true};
-			string timeFromNow = persianDateTime.ElapsedTime();
-			Console.WriteLine(timeFromNow);
+			//persianDateTime = PersianDateTime.Parse("جمعه 93/2/1 ساعت 3:2 ب.ظ");
+			//persianDateTime.EnglishNumber = true;
+			//Console.WriteLine(persianDateTime);
 
-			persianDateTime = PersianDateTime.Today;
-			persianDateTime.EnglishNumber = true;
-			Console.WriteLine(persianDateTime.GetWeekOfMonth);
-			Console.WriteLine(persianDateTime.GetWeekOfYear);
+			//persianDateTime = new PersianDateTime(DateTime.Now.AddDays(-8)) {EnglishNumber = true};
+			//string timeFromNow = persianDateTime.ElapsedTime();
+			//Console.WriteLine(timeFromNow);
 
-			persianDateTime = PersianDateTime.Now;
-			persianDateTime.EnglishNumber = true;
-			Console.WriteLine(persianDateTime.Date);
+			//persianDateTime = PersianDateTime.Today;
+			//persianDateTime.EnglishNumber = true;
+			//Console.WriteLine(persianDateTime.GetWeekOfMonth);
+			//Console.WriteLine(persianDateTime.GetWeekOfYear);
 
-			persianDateTime = new PersianDateTime(1394, 5, 9);
-			Console.WriteLine(persianDateTime.Date);
+			//persianDateTime = PersianDateTime.Now;
+			//persianDateTime.EnglishNumber = true;
+			//Console.WriteLine(persianDateTime.Date);
 
-			persianDateTime = new PersianDateTime(1394, 5, 9);
-			Console.WriteLine(PersianDateTime.Now.Subtract(persianDateTime));
+			//persianDateTime = new PersianDateTime(1394, 5, 9);
+			//Console.WriteLine(persianDateTime.Date);
 
-			// Test IComparable
+			//persianDateTime = new PersianDateTime(1394, 5, 9);
+			//Console.WriteLine(PersianDateTime.Now.Subtract(persianDateTime));
 
-			Console.WriteLine();
-			Console.WriteLine("--------------------");
-			Console.WriteLine();
+			//// Test IComparable
 
-			List<PersianDateTime> persianDateTimes = new List<PersianDateTime>();
-			for (int i = 0; i < 5; i++)
-			{
-				persianDateTime = new PersianDateTime(DateTime.Now)
-				{
-					EnglishNumber = true
-				}.AddDays(i).AddMinutes(i);
-				persianDateTimes.Add(persianDateTime);
-			}
-			persianDateTimes = persianDateTimes.OrderByDescending(q => q).ToList();
+			//Console.WriteLine();
+			//Console.WriteLine("--------------------");
+			//Console.WriteLine();
 
-			foreach (PersianDateTime item in persianDateTimes)
-				Console.WriteLine(item);
+			//List<PersianDateTime> persianDateTimes = new List<PersianDateTime>();
+			//for (int i = 0; i < 5; i++)
+			//{
+			//	persianDateTime = new PersianDateTime(DateTime.Now)
+			//	{
+			//		EnglishNumber = true
+			//	}.AddDays(i).AddMinutes(i);
+			//	persianDateTimes.Add(persianDateTime);
+			//}
+			//persianDateTimes = persianDateTimes.OrderByDescending(q => q).ToList();
+
+			//foreach (PersianDateTime item in persianDateTimes)
+			//	Console.WriteLine(item);
 
 			// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
