@@ -16,7 +16,7 @@ namespace ConsoleApplication1
 
 			var persianDateTime2 = PersianDateTime.Parse(13901229);
 			var dateTIme1 = persianDateTime2.ToDateTime();
-			Console.WriteLine(dateTIme1 == persianDateTime2);
+			Console.WriteLine(dateTIme1.Equals(persianDateTime2));
 
 			PersianDateTime persianDateTime1 = JsonConvert.DeserializeObject<PersianDateTime>(serializedPersianDateTime);
 			Console.WriteLine(persianDateTime1.ToString("yyyy/MM/dd   HH:mm:ss:fff"));

@@ -204,7 +204,7 @@ namespace MD.PersianDateTime
 			get
 			{
 				int days;
-				switch (this.Month)
+				switch (Month)
 				{
 					case 1:
 					case 2:
@@ -257,8 +257,8 @@ namespace MD.PersianDateTime
 			get
 			{
 				if (_dateTime <= DateTime.MinValue) return 0;
-				PersianDateTime persianDateTime = this.AddDays(1 - this.Day);
-				return this.GetWeekOfYear - persianDateTime.GetWeekOfYear + 1;
+				PersianDateTime persianDateTime = AddDays(1 - Day);
+				return GetWeekOfYear - persianDateTime.GetWeekOfYear + 1;
 			}
 		}
 
@@ -282,7 +282,7 @@ namespace MD.PersianDateTime
 			get
 			{
 				if (_dateTime <= DateTime.MinValue) return false;
-				return PersianCalendar.IsLeapYear(this.Year);
+				return PersianCalendar.IsLeapYear(Year);
 			}
 		}
 
@@ -554,7 +554,7 @@ namespace MD.PersianDateTime
 			{
 				return new PersianDateTime(_dateTime)
 				{
-					EnglishNumber = this.EnglishNumber
+					EnglishNumber = EnglishNumber
 				};
 			}
 		}
@@ -769,7 +769,7 @@ namespace MD.PersianDateTime
 		/// <returns>مقدار بازگشتی همانند مقدار بازگشتی متد کامپیر در دیت تایم دات نت است</returns>
 		public int CompareTo(PersianDateTime otherPersianDateTime)
 		{
-			return this._dateTime.CompareTo(otherPersianDateTime.ToDateTime());
+			return _dateTime.CompareTo(otherPersianDateTime.ToDateTime());
 		}
 
 		/// <summary>
@@ -778,7 +778,7 @@ namespace MD.PersianDateTime
 		/// <returns>مقدار بازگشتی همانند مقدار بازگشتی متد کامپیر در دیت تایم دات نت است</returns>
 		public int CompareTo(DateTime otherDateTime)
 		{
-			return this._dateTime.CompareTo(otherDateTime);
+			return _dateTime.CompareTo(otherDateTime);
 		}
 
 		#region operators
@@ -876,13 +876,13 @@ namespace MD.PersianDateTime
 
 		public bool Equals(PersianDateTime other)
 		{
-			return this.Year == other.Year && this.Month == other.Month && this.Day == other.Day &&
-				this.Hour == other.Hour && this.Minute == other.Minute && this.Second == other.Second && this.MiliSecond == other.MiliSecond;
+			return Year == other.Year && Month == other.Month && Day == other.Day &&
+				Hour == other.Hour && Minute == other.Minute && Second == other.Second && MiliSecond == other.MiliSecond;
 		}
 
 		public bool Equals(DateTime other)
 		{
-			return this == other;
+			return _dateTime == other;
 		}
 
 		#endregion
@@ -1318,7 +1318,7 @@ namespace MD.PersianDateTime
 			PersianDateTime persianDateTimeNow = new PersianDateTime(DateTime.Now);
 			TimeSpan timeSpan = persianDateTimeNow - _dateTime;
 			if (timeSpan.TotalDays > 90)
-				return this.ToShortDateTimeString();
+				return ToShortDateTimeString();
 
 			string result = string.Empty;
 			if (timeSpan.TotalDays > 30)
