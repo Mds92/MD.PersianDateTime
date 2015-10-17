@@ -10,6 +10,12 @@ namespace ConsoleApplication1
 	{
 		private static void Main()
 		{
+			Test2();
+			Console.ReadKey();
+		}
+
+		private static void Test1()
+		{
 			PersianDateTime persianDateTime = PersianDateTime.Parse("1394/02/02 12:40:50:312");
 			persianDateTime.EnglishNumber = true;
 			string serializedPersianDateTime = JsonConvert.SerializeObject(persianDateTime);
@@ -101,9 +107,16 @@ namespace ConsoleApplication1
 			foreach (PersianDateTime item in persianDateTimes)
 				Console.WriteLine(item);
 
-			// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		}
 
-			Console.ReadKey();
+		private static void Test2()
+		{
+			PersianDateTime persianDateTime = PersianDateTime.Parse("1394/02/02 12:40:50:312");
+			persianDateTime.EnglishNumber = true;
+
+			var date = persianDateTime.Date;
+			Console.WriteLine(date);
+
 		}
 	}
 }

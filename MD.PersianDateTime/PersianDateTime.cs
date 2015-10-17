@@ -552,10 +552,11 @@ namespace MD.PersianDateTime
 		{
 			get
 			{
-				return new PersianDateTime(_dateTime)
+				PersianDateTime persianDateTime = new PersianDateTime(this.Year, this.Month, this.Day)
 				{
-					EnglishNumber = EnglishNumber
+					EnglishNumber = this.EnglishNumber
 				};
+				return persianDateTime;
 			}
 		}
 
