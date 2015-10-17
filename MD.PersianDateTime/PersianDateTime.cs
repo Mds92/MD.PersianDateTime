@@ -1316,7 +1316,7 @@ namespace MD.PersianDateTime
 			//if (_dateTime <= DateTime.MinValue) return null;
 
 			PersianDateTime persianDateTimeNow = new PersianDateTime(DateTime.Now);
-			TimeSpan timeSpan = this - persianDateTimeNow;
+			TimeSpan timeSpan = persianDateTimeNow - _dateTime;
 			if (timeSpan.TotalDays > 90)
 				return this.ToShortDateTimeString();
 
