@@ -995,8 +995,13 @@ namespace MD.PersianDateTime
 					year = Regex.Match(persianDateTimeInString, @"(?<=-)\d{2,4}(?=-)", RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace).Value;
 			}
 
-			if (year.Length <= 2 && year[0] == '9') year = string.Format("13{0}", year);
-			else if (year.Length <= 2) year = string.Format("14{0}", year);
+            /*todo: I think this section not needed
+            for example, for the year 67 method return 1467 (why not 1567, 1867 or 2067)          
+            in my opinion adding 13 or 14 to date is a user decision and not related to the library.
+            
+            if (year.Length <= 2 && year[0] == '9') year = string.Format("13{0}", year);
+            else if (year.Length <= 2) year = string.Format("14{0}", year);
+             */ 
 
 			int numericYear = int.Parse(year);
 			int numericMonth = int.Parse(month);
