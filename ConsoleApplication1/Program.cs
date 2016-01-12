@@ -111,7 +111,7 @@ namespace ConsoleApplication1
 
 		private static void Test2()
 		{
-			PersianDateTime persianDateTime = PersianDateTime.Parse("1394/02/02 12:40:50:312");
+			PersianDateTime persianDateTime = PersianDateTime.Parse("1394/02/٠٦ 12:40:50:312");
 			persianDateTime.EnglishNumber = true;
 
 			var date = persianDateTime.Date;
