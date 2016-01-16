@@ -111,12 +111,21 @@ namespace ConsoleApplication1
 
 		private static void Test2()
 		{
-			PersianDateTime persianDateTime = PersianDateTime.Parse("1394/02/٠٦ 12:40:50:312");
+			PersianDateTime persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 2000");
 			persianDateTime.EnglishNumber = true;
+			Console.WriteLine(persianDateTime);
 
-			var date = persianDateTime.Date;
-			Console.WriteLine(date);
+			persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 1394");
+			persianDateTime.EnglishNumber = true;
+			Console.WriteLine(persianDateTime);
 
+			persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 94");
+			persianDateTime.EnglishNumber = true;
+			Console.WriteLine(persianDateTime);
+
+			persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 58");
+			persianDateTime.EnglishNumber = true;
+			Console.WriteLine(persianDateTime);
 		}
 	}
 }

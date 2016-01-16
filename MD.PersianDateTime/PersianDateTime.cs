@@ -995,8 +995,8 @@ namespace MD.PersianDateTime
 					year = Regex.Match(persianDateTimeInString, @"(?<=-)\d{2,4}(?=-)", RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace).Value;
 			}
 
-			if (year.Length <= 2 && year[0] == '9') year = string.Format("13{0}", year);
-			else if (year.Length <= 2) year = string.Format("14{0}", year);
+			//if (year.Length <= 2 && year[0] == '9') year = string.Format("13{0}", year);
+			//else if (year.Length <= 2) year = string.Format("14{0}", year);
 
 			int numericYear = int.Parse(year);
 			int numericMonth = int.Parse(month);
@@ -1005,6 +1005,9 @@ namespace MD.PersianDateTime
 			int numericMinute = int.Parse(minute);
 			int numericSecond = int.Parse(second);
 			int numericMiliSecond = int.Parse(miliSecond);
+
+			if (numericYear < 100)
+				numericYear += 1300;
 
 			switch (amPmEnum)
 			{
