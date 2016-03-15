@@ -12,8 +12,8 @@ namespace MD.PersianDateTime
 	/// 1393/09/14
 	/// </summary>
 	[Serializable]
-	public struct PersianDateTime : 
-		ISerializable, 
+	public struct PersianDateTime :
+		ISerializable,
 		IComparable<PersianDateTime>, IComparable<DateTime>,
 		IEquatable<PersianDateTime>, IEquatable<DateTime>
 	{
@@ -587,7 +587,8 @@ namespace MD.PersianDateTime
 		/// <summary>
 		/// متد سازنده برای دی سریالایز شدن
 		/// </summary>
-		private PersianDateTime(SerializationInfo info, StreamingContext context) : this()
+		private PersianDateTime(SerializationInfo info, StreamingContext context)
+			: this()
 		{
 			_dateTime = info.GetDateTime("DateTime");
 			EnglishNumber = info.GetBoolean("EnglishNumber");
@@ -911,7 +912,7 @@ namespace MD.PersianDateTime
 			PersianDateTime startDayOfRamadan2 = new PersianDateTime(hijriCalendar.ToDateTime(++currentHijriYear, 9, 1, 0, 0, 0, 0));
 			if (startDayOfRamadan1.Year == startDayOfRamadan2.Year)
 				result.Add(startDayOfRamadan2);
-			
+
 			return result.ToArray();
 		}
 
@@ -922,8 +923,8 @@ namespace MD.PersianDateTime
 		/// <param name="dateSeperatorPattern">کاراکتری که جدا کننده تاریخ ها است</param>
 		public static PersianDateTime Parse(string persianDateTimeInString, string dateSeperatorPattern = @"\/|-")
 		{
-            //Convert persian and arabic digit to english to avoid throwing exception in Parse method
-		    persianDateTimeInString = persianDateTimeInString.ConvertDigitsToLatin();
+			//Convert persian and arabic digit to english to avoid throwing exception in Parse method
+			persianDateTimeInString = persianDateTimeInString.ConvertDigitsToLatin();
 
 			string month = "", year, day,
 				hour = "0",
@@ -986,13 +987,27 @@ namespace MD.PersianDateTime
 					throw new Exception("عدد یا حرف ماه در رشته ورودی وجود ندارد");
 
 				// بدست آوردن روز
-				day = Regex.Match(persianDateTimeInString, @"(?<=-)\d{1,2}(?=-)", RegexOptions.IgnoreCase).Value;
+				Match dayMatch = Regex.Match(persianDateTimeInString, @"(?<=-)\d{1,2}(?=-)", RegexOptions.IgnoreCase);
+				if (dayMatch.Success)
+				{
+					day = dayMatch.Value;
+					persianDateTimeInString = persianDateTimeInString.Replace(day, "");
+				}
+				else
+					throw new Exception("عدد روز در رشته ورودی وجود ندارد");
 
 				// بدست آوردن سال
-				if (Regex.IsMatch(persianDateTimeInString, @"(?<=-)\d{4}(?=-)"))
-					year = Regex.Match(persianDateTimeInString, @"(?<=-)\d{4}(?=-)", RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace).Value;
+				Match yearMatch = Regex.Match(persianDateTimeInString, @"(?<=-)\d{4}(?=-)", RegexOptions.IgnoreCase);
+				if (yearMatch.Success)
+					year = yearMatch.Value;
 				else
-					year = Regex.Match(persianDateTimeInString, @"(?<=-)\d{2,4}(?=-)", RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace).Value;
+				{
+					yearMatch = Regex.Match(persianDateTimeInString, @"(?<=-)\d{2,4}(?=-)", RegexOptions.IgnoreCase);
+					if (yearMatch.Success)
+						year = yearMatch.Value;
+					else
+						throw new Exception("عدد سال در رشته ورودی وجود ندارد");
+				}
 			}
 
 			//if (year.Length <= 2 && year[0] == '9') year = string.Format("13{0}", year);

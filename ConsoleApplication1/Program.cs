@@ -10,7 +10,7 @@ namespace ConsoleApplication1
 	{
 		private static void Main()
 		{
-			Test2();
+			Test3();
 			Console.ReadKey();
 		}
 
@@ -124,6 +124,17 @@ namespace ConsoleApplication1
 			Console.WriteLine(persianDateTime);
 
 			persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 58");
+			persianDateTime.EnglishNumber = true;
+			Console.WriteLine(persianDateTime);
+		}
+
+		private static void Test3()
+		{
+			PersianDateTime persianDateTime = PersianDateTime.Parse("سه شنبه, ۲۵ اسفند ۹۴, ۰۹:20:30");
+			persianDateTime.EnglishNumber = true;
+			Console.WriteLine(persianDateTime);
+
+			persianDateTime = PersianDateTime.Parse("سه شنبه, ۲۵ اسفند ۹۴ ساعت ۰۹:۰۰");
 			persianDateTime.EnglishNumber = true;
 			Console.WriteLine(persianDateTime);
 		}
