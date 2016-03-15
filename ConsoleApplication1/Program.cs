@@ -130,7 +130,11 @@ namespace ConsoleApplication1
 
 		private static void Test3()
 		{
-			PersianDateTime persianDateTime = PersianDateTime.Parse("سه شنبه, ۲۵ اسفند ۹۴, ۰۹:20:30");
+			PersianDateTime persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 58");
+			persianDateTime.EnglishNumber = true;
+			Console.WriteLine(persianDateTime);
+
+			persianDateTime = PersianDateTime.Parse("سه شنبه, ۲۵ اسفند ۹۴, ۰۹:20:30");
 			persianDateTime.EnglishNumber = true;
 			Console.WriteLine(persianDateTime);
 

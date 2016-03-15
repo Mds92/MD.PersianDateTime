@@ -991,7 +991,7 @@ namespace MD.PersianDateTime
 				if (dayMatch.Success)
 				{
 					day = dayMatch.Value;
-					persianDateTimeInString = persianDateTimeInString.Replace(day, "");
+					persianDateTimeInString = Regex.Replace(persianDateTimeInString, string.Format("(?<=-){0}(?=-)", day), "");
 				}
 				else
 					throw new Exception("عدد روز در رشته ورودی وجود ندارد");
