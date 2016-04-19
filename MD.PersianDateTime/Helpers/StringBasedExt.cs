@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Text;
 
-namespace MD.PersianDateTime.Extensions
+namespace MD.PersianDateTime
 {
-    public static class StringBasedExt
+    internal static class StringHelper
     {
         /// <summary>
         /// Convert all persian and arabic digit to english in any string  
@@ -11,7 +11,7 @@ namespace MD.PersianDateTime.Extensions
         /// </summary>
         /// <param name="inputString">input string that maybe contain persian or arabic digit</param>
         /// <returns>a string with english digit</returns>
-        public static string ConvertDigitsToLatin(this string inputString)
+        public static string ConvertDigitsToLatin(string inputString)
         {
             var sb = new StringBuilder();
 

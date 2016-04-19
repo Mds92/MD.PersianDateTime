@@ -10,6 +10,8 @@ namespace ConsoleApplication1
 	{
 		private static void Main()
 		{
+			Test1();
+			Test2();
 			Test3();
 			Console.ReadKey();
 		}

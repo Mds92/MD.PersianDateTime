@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
-using MD.PersianDateTime.Extensions;
 
 namespace MD.PersianDateTime
 {
@@ -924,7 +923,7 @@ namespace MD.PersianDateTime
 		public static PersianDateTime Parse(string persianDateTimeInString, string dateSeperatorPattern = @"\/|-")
 		{
 			//Convert persian and arabic digit to english to avoid throwing exception in Parse method
-			persianDateTimeInString = persianDateTimeInString.ConvertDigitsToLatin();
+			persianDateTimeInString = StringHelper.ConvertDigitsToLatin(persianDateTimeInString);
 
 			string month = "", year, day,
 				hour = "0",

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MD.PersianDateTime</RootNamespace>
     <AssemblyName>MD.PersianDateTime</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -44,7 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\StringBasedExt.cs" />
+    <Compile Include="Helpers\StringBasedExt.cs" />
     <Compile Include="PersianDayOfWeek.cs" />
     <Compile Include="PersianDateTime.cs">
       <SubType>Code</SubType>
