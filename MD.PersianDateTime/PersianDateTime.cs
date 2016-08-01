@@ -1040,11 +1040,11 @@ namespace MD.PersianDateTime
 		/// <summary>
 		/// پارس کردن یک رشته برای یافتن تاریخ شمسی
 		/// </summary>
-		public static bool TryParse(string persianDateTimeInString, out PersianDateTime? result, string dateSeperatorPattern = @"\/|-")
+		public static bool TryParse(string persianDateTimeInString, out PersianDateTime result, string dateSeperatorPattern = @"\/|-")
 		{
 			if (string.IsNullOrEmpty(persianDateTimeInString))
 			{
-				result = null;
+				result = MinValue;
 				return false;
 			}
 			try
@@ -1054,7 +1054,7 @@ namespace MD.PersianDateTime
 			}
 			catch
 			{
-				result = null;
+				result = MinValue;
 				return false;
 			}
 		}
