@@ -1078,7 +1078,7 @@ namespace MD.PersianDateTime
 		/// <para />
 		/// همانند 13920305
 		/// </summary>
-		public static bool TryParse(int numericPersianDate, out PersianDateTime? result)
+		public static bool TryParse(int numericPersianDate, out PersianDateTime result)
 		{
 			try
 			{
@@ -1087,7 +1087,7 @@ namespace MD.PersianDateTime
 			}
 			catch
 			{
-				result = null;
+				result = MinValue;
 				return false;
 			}
 		}
