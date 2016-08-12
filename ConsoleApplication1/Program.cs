@@ -18,7 +18,7 @@ namespace ConsoleApplication1
 
 		private static void Test1()
 		{
-			PersianDateTime persianDateTime = PersianDateTime.Parse("1394/02/02 12:40:50:312");
+			PersianDateTime persianDateTime = PersianDateTime.Parse("دوشنبه 05 مرداد 1395 ساعت 04:03");
 			persianDateTime.EnglishNumber = true;
 			string serializedPersianDateTime = JsonConvert.SerializeObject(persianDateTime);
 

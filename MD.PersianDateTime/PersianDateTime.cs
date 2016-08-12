@@ -18,8 +18,8 @@ namespace MD.PersianDateTime
 	{
 		#region properties and fields
 
-		static PersianCalendar _persianCalendar;
-		static PersianCalendar PersianCalendar
+	    private static PersianCalendar _persianCalendar;
+	    private static PersianCalendar PersianCalendar
 		{
 			get
 			{
@@ -28,7 +28,7 @@ namespace MD.PersianDateTime
 				return _persianCalendar;
 			}
 		}
-		readonly DateTime _dateTime;
+	    private readonly DateTime _dateTime;
 
 		/// <summary>
 		/// آیا اعداد در خروجی به صورت انگلیسی نمایش داده شوند؟
@@ -100,7 +100,7 @@ namespace MD.PersianDateTime
 		{
 			get
 			{
-				DayOfWeek dayOfWeek = PersianCalendar.GetDayOfWeek(_dateTime);
+				var dayOfWeek = PersianCalendar.GetDayOfWeek(_dateTime);
 				PersianDayOfWeek persianDayOfWeek;
 				switch (dayOfWeek)
 				{
@@ -257,7 +257,7 @@ namespace MD.PersianDateTime
 			get
 			{
 				if (_dateTime <= DateTime.MinValue) return 0;
-				PersianDateTime persianDateTime = AddDays(1 - Day);
+				var persianDateTime = AddDays(1 - Day);
 				return GetWeekOfYear - persianDateTime.GetWeekOfYear + 1;
 			}
 		}
@@ -304,7 +304,7 @@ namespace MD.PersianDateTime
 		{
 			get
 			{
-				string result = string.Empty;
+				var result = string.Empty;
 				switch (PersianAmPm)
 				{
 					case AmPmEnum.AM:
@@ -507,7 +507,7 @@ namespace MD.PersianDateTime
 			get
 			{
 				//if (_dateTime <= DateTime.MinValue) return null;
-				string result = string.Format("{0:00}:{1:00}:{2:00}:{3:000}", Hour, Minute, Second, MiliSecond);
+				var result = string.Format("{0:00}:{1:00}:{2:00}:{3:000}", Hour, Minute, Second, MiliSecond);
 				if (EnglishNumber) return result;
 				return ToPersianNumber(result);
 			}
@@ -523,7 +523,7 @@ namespace MD.PersianDateTime
 			get
 			{
 				//if (_dateTime <= DateTime.MinValue) return null;
-				string result = string.Format("ساعت {0:00}:{1:00}:{2:00}:{3:000} {4}", ShortHour, Minute, Second, MiliSecond, GetPersianAmPm);
+				var result = string.Format("ساعت {0:00}:{1:00}:{2:00}:{3:000} {4}", ShortHour, Minute, Second, MiliSecond, GetPersianAmPm);
 				if (EnglishNumber) return result;
 				return ToPersianNumber(result);
 			}
@@ -539,7 +539,7 @@ namespace MD.PersianDateTime
 			get
 			{
 				//if (_dateTime <= DateTime.MinValue) return null;
-				string result = string.Format("{0:00}:{1:00}:{2:00} {3}", ShortHour, Minute, Second, GetPersianAmPm);
+				var result = string.Format("{0:00}:{1:00}:{2:00} {3}", ShortHour, Minute, Second, GetPersianAmPm);
 				if (EnglishNumber) return result;
 				return ToPersianNumber(result);
 			}
@@ -552,7 +552,7 @@ namespace MD.PersianDateTime
 		{
 			get
 			{
-				PersianDateTime persianDateTime = new PersianDateTime(this.Year, this.Month, this.Day)
+				var persianDateTime = new PersianDateTime(this.Year, this.Month, this.Day)
 				{
 					EnglishNumber = this.EnglishNumber
 				};
@@ -675,14 +675,14 @@ namespace MD.PersianDateTime
 
 		#region Types
 
-		enum AmPmEnum
+	    private enum AmPmEnum
 		{
 			AM = 0,
 			PM = 1,
 			None = 2,
 		}
 
-		enum PersianDateTimeMonthEnum
+	    private enum PersianDateTimeMonthEnum
 		{
 			فروردین = 1,
 			اردیبهشت = 2,
@@ -698,7 +698,7 @@ namespace MD.PersianDateTime
 			اسفند = 12,
 		}
 
-		struct PersianWeekDaysStruct
+	    private struct PersianWeekDaysStruct
 		{
 			public static KeyValuePair<int, string> شنبه
 			{
@@ -748,7 +748,7 @@ namespace MD.PersianDateTime
 		public override string ToString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return string.Empty;
-			string result = string.Format("{0:0000}/{1:00}/{2:00}   {3:00}:{4:00}:{5:00}", Year, Month, Day, Hour, Minute, Second);
+			var result = string.Format("{0:0000}/{1:00}/{2:00}   {3:00}:{4:00}:{5:00}", Year, Month, Day, Hour, Minute, Second);
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
@@ -756,7 +756,7 @@ namespace MD.PersianDateTime
 		public override bool Equals(object obj)
 		{
 			if (!(obj is PersianDateTime)) return false;
-			PersianDateTime persianDateTime = (PersianDateTime)obj;
+			var persianDateTime = (PersianDateTime)obj;
 			return _dateTime == persianDateTime.ToDateTime();
 		}
 
@@ -900,15 +900,15 @@ namespace MD.PersianDateTime
 		/// </summary>
 		public PersianDateTime[] GetStartDayOfRamadan(int hijriAdjustment)
 		{
-			List<PersianDateTime> result = new List<PersianDateTime>();
-			HijriCalendar hijriCalendar = new HijriCalendar { HijriAdjustment = hijriAdjustment };
+			var result = new List<PersianDateTime>();
+			var hijriCalendar = new HijriCalendar { HijriAdjustment = hijriAdjustment };
 
-			int currentHijriYear = hijriCalendar.GetYear(_dateTime);
+			var currentHijriYear = hijriCalendar.GetYear(_dateTime);
 
-			PersianDateTime startDayOfRamadan1 = new PersianDateTime(hijriCalendar.ToDateTime(currentHijriYear, 9, 1, 0, 0, 0, 0));
+			var startDayOfRamadan1 = new PersianDateTime(hijriCalendar.ToDateTime(currentHijriYear, 9, 1, 0, 0, 0, 0));
 			result.Add(startDayOfRamadan1);
 
-			PersianDateTime startDayOfRamadan2 = new PersianDateTime(hijriCalendar.ToDateTime(++currentHijriYear, 9, 1, 0, 0, 0, 0));
+			var startDayOfRamadan2 = new PersianDateTime(hijriCalendar.ToDateTime(++currentHijriYear, 9, 1, 0, 0, 0, 0));
 			if (startDayOfRamadan1.Year == startDayOfRamadan2.Year)
 				result.Add(startDayOfRamadan2);
 
@@ -930,25 +930,22 @@ namespace MD.PersianDateTime
 				minute = "0",
 				second = "0",
 				miliSecond = "0";
-
-			AmPmEnum amPmEnum = AmPmEnum.None;
-
-			string dateSeperatorPatternString = string.Format(@"{0}", dateSeperatorPattern);
-			bool containMonthSeperator = Regex.IsMatch(persianDateTimeInString, dateSeperatorPatternString);
+			var amPmEnum = AmPmEnum.None;
+			var containMonthSeperator = Regex.IsMatch(persianDateTimeInString, dateSeperatorPattern);
 
 			persianDateTimeInString = ToEnglishNumber(persianDateTimeInString.Replace("&nbsp;", " ").Replace(" ", "-").Replace("\\", "-"));
-			persianDateTimeInString = Regex.Replace(persianDateTimeInString, dateSeperatorPatternString, "-");
+			persianDateTimeInString = Regex.Replace(persianDateTimeInString, dateSeperatorPattern, "-");
 			persianDateTimeInString = persianDateTimeInString.Replace("ك", "ک").Replace("ي", "ی");
 
 			persianDateTimeInString = string.Format("-{0}-", persianDateTimeInString);
 
 			// بدست آوردن ب.ظ یا ق.ظ
-			if (persianDateTimeInString.Contains("ق.ظ"))
+			if (persianDateTimeInString.IndexOf("ق.ظ",  StringComparison.InvariantCultureIgnoreCase) > -1)
 				amPmEnum = AmPmEnum.AM;
-			else if (persianDateTimeInString.Contains("ب.ظ"))
+			else if (persianDateTimeInString.IndexOf("ب.ظ", StringComparison.InvariantCultureIgnoreCase) > -1)
 				amPmEnum = AmPmEnum.PM;
 
-			if (persianDateTimeInString.Contains(":")) // رشته ورودی شامل ساعت نیز هست
+			if (persianDateTimeInString.IndexOf(":", StringComparison.InvariantCultureIgnoreCase) > -1) // رشته ورودی شامل ساعت نیز هست
 			{
 				persianDateTimeInString = Regex.Replace(persianDateTimeInString, @"-*:-*", ":");
 				hour = Regex.Match(persianDateTimeInString, @"(?<=-)\d{1,2}(?=:)", RegexOptions.IgnoreCase).Value;
@@ -976,7 +973,7 @@ namespace MD.PersianDateTime
 			{
 				foreach (PersianDateTimeMonthEnum item in Enum.GetValues(typeof(PersianDateTimeMonthEnum)))
 				{
-					string itemValueInString = item.ToString();
+					var itemValueInString = item.ToString();
 					if (!persianDateTimeInString.Contains(itemValueInString)) continue;
 					month = ((int)item).ToString();
 					break;
@@ -986,7 +983,7 @@ namespace MD.PersianDateTime
 					throw new Exception("عدد یا حرف ماه در رشته ورودی وجود ندارد");
 
 				// بدست آوردن روز
-				Match dayMatch = Regex.Match(persianDateTimeInString, @"(?<=-)\d{1,2}(?=-)", RegexOptions.IgnoreCase);
+				var dayMatch = Regex.Match(persianDateTimeInString, @"(?<=-)\d{1,2}(?=-)", RegexOptions.IgnoreCase);
 				if (dayMatch.Success)
 				{
 					day = dayMatch.Value;
@@ -996,7 +993,7 @@ namespace MD.PersianDateTime
 					throw new Exception("عدد روز در رشته ورودی وجود ندارد");
 
 				// بدست آوردن سال
-				Match yearMatch = Regex.Match(persianDateTimeInString, @"(?<=-)\d{4}(?=-)", RegexOptions.IgnoreCase);
+				var yearMatch = Regex.Match(persianDateTimeInString, @"(?<=-)\d{4}(?=-)", RegexOptions.IgnoreCase);
 				if (yearMatch.Success)
 					year = yearMatch.Value;
 				else
@@ -1012,13 +1009,13 @@ namespace MD.PersianDateTime
 			//if (year.Length <= 2 && year[0] == '9') year = string.Format("13{0}", year);
 			//else if (year.Length <= 2) year = string.Format("14{0}", year);
 
-			int numericYear = int.Parse(year);
-			int numericMonth = int.Parse(month);
-			int numericDay = int.Parse(day);
-			int numericHour = int.Parse(hour);
-			int numericMinute = int.Parse(minute);
-			int numericSecond = int.Parse(second);
-			int numericMiliSecond = int.Parse(miliSecond);
+			var numericYear = int.Parse(year);
+			var numericMonth = int.Parse(month);
+			var numericDay = int.Parse(day);
+			var numericHour = int.Parse(hour);
+			var numericMinute = int.Parse(minute);
+			var numericSecond = int.Parse(second);
+			var numericMiliSecond = int.Parse(miliSecond);
 
 			if (numericYear < 100)
 				numericYear += 1300;
@@ -1068,9 +1065,9 @@ namespace MD.PersianDateTime
 		{
 			if (numericPersianDate.ToString().Length != 8)
 				throw new InvalidCastException("Numeric persian date time must have a format like 13920101.");
-			int year = numericPersianDate / 10000;
-			int day = numericPersianDate % 100;
-			int month = (numericPersianDate / 100) % 100;
+			var year = numericPersianDate / 10000;
+			var day = numericPersianDate % 100;
+			var month = (numericPersianDate / 100) % 100;
 			return new PersianDateTime(year, month, day);
 		}
 		/// <summary>
@@ -1092,9 +1089,9 @@ namespace MD.PersianDateTime
 			}
 		}
 
-		static readonly List<string> GregorianWeekDayNames = new List<string> { "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" };
-		static readonly List<string> GregorianMonthNames = new List<string> { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" };
-		static readonly List<string> PmAm = new List<string> { "pm", "am" };
+	    private static readonly List<string> GregorianWeekDayNames = new List<string> { "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" };
+	    private static readonly List<string> GregorianMonthNames = new List<string> { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" };
+	    private static readonly List<string> PmAm = new List<string> { "pm", "am" };
 
 		/// <summary>
 		/// فرمت های که پشتیبانی می شوند
@@ -1145,7 +1142,7 @@ namespace MD.PersianDateTime
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
 
-			string dateTimeString = format.Trim();
+			var dateTimeString = format.Trim();
 
 			dateTimeString = dateTimeString.Replace("yyyy", Year.ToString(CultureInfo.InvariantCulture));
 			dateTimeString = dateTimeString.Replace("yy", GetShortYear.ToString("00", CultureInfo.InvariantCulture));
@@ -1183,19 +1180,19 @@ namespace MD.PersianDateTime
 			inputString = inputString.ToLower();
 			bool result;
 
-			foreach (string gregorianWeekDayName in GregorianWeekDayNames)
+			foreach (var gregorianWeekDayName in GregorianWeekDayNames)
 			{
 				result = inputString.Contains(gregorianWeekDayName);
 				if (result) return true;
 			}
 
-			foreach (string gregorianMonthName in GregorianMonthNames)
+			foreach (var gregorianMonthName in GregorianMonthNames)
 			{
 				result = inputString.Contains(gregorianMonthName);
 				if (result) return true;
 			}
 
-			foreach (string item in PmAm)
+			foreach (var item in PmAm)
 			{
 				result = inputString.Contains(item);
 				if (result) return true;
@@ -1211,7 +1208,7 @@ namespace MD.PersianDateTime
 		/// </summary>
 		public static bool IsSqlDateTime(DateTime dateTime)
 		{
-			DateTime minSqlDateTimeValue = new DateTime(1753, 1, 1);
+			var minSqlDateTimeValue = new DateTime(1753, 1, 1);
 			return dateTime >= minSqlDateTimeValue;
 		}
 
@@ -1222,7 +1219,7 @@ namespace MD.PersianDateTime
 		/// </summary>
 		public int GetMonthEnum(string longMonthName)
 		{
-			PersianDateTimeMonthEnum monthEnum = (PersianDateTimeMonthEnum)Enum.Parse(typeof(PersianDateTimeMonthEnum), longMonthName);
+			var monthEnum = (PersianDateTimeMonthEnum)Enum.Parse(typeof(PersianDateTimeMonthEnum), longMonthName);
 			return (int)monthEnum;
 		}
 
@@ -1234,7 +1231,7 @@ namespace MD.PersianDateTime
 		public string ToShortDateString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
-			string result = string.Format("{0:0000}/{1:00}/{2:00}", Year, Month, Day);
+			var result = string.Format("{0:0000}/{1:00}/{2:00}", Year, Month, Day);
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
@@ -1247,7 +1244,7 @@ namespace MD.PersianDateTime
 		public string ToShortDate1String()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
-			string result = string.Format("{0} {1:00} {2} {3}", GetShortDayOfWeekName, Day, GetLongMonthName, GetShortYear);
+			var result = string.Format("{0} {1:00} {2} {3}", GetShortDayOfWeekName, Day, GetLongMonthName, GetShortYear);
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
@@ -1259,7 +1256,7 @@ namespace MD.PersianDateTime
 		/// </summary>
 		public int ToShortDateInt()
 		{
-			string result = string.Format("{0:0000}{1:00}{2:00}", Year, Month, Day);
+			var result = string.Format("{0:0000}{1:00}{2:00}", Year, Month, Day);
 			return int.Parse(result);
 		}
 
@@ -1271,7 +1268,7 @@ namespace MD.PersianDateTime
 		public string ToLongDateString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
-			string result = string.Format("{0}، {1:00} {2} {3:0000}", GetLongDayOfWeekName, Day, GetLongMonthName, Year);
+			var result = string.Format("{0}، {1:00} {2} {3:0000}", GetLongDayOfWeekName, Day, GetLongMonthName, Year);
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
@@ -1284,7 +1281,7 @@ namespace MD.PersianDateTime
 		public string ToLongDateTimeString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
-			string result = string.Format("{0}، {1:00} {2} {3:0000} ساعت {4:00}:{5:00}:{6:00}", GetLongDayOfWeekName, Day, GetLongMonthName, Year, Hour, Minute, Second);
+			var result = string.Format("{0}، {1:00} {2} {3:0000} ساعت {4:00}:{5:00}:{6:00}", GetLongDayOfWeekName, Day, GetLongMonthName, Year, Hour, Minute, Second);
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
@@ -1297,7 +1294,7 @@ namespace MD.PersianDateTime
 		public string ToShortDateTimeString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
-			string result = string.Format("{0}، {1:00} {2} {3:0000} {4:00}:{5:00}", GetLongDayOfWeekName, Day, GetLongMonthName, Year, Hour, Minute);
+			var result = string.Format("{0}، {1:00} {2} {3:0000} {4:00}:{5:00}", GetLongDayOfWeekName, Day, GetLongMonthName, Year, Hour, Minute);
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
@@ -1310,7 +1307,7 @@ namespace MD.PersianDateTime
 		public string ToShortTimeString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
-			string result = string.Format("{0:00}:{1:00} {2}", ShortHour, Minute, GetPersianAmPm);
+			var result = string.Format("{0:00}:{1:00} {2}", ShortHour, Minute, GetPersianAmPm);
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
@@ -1323,7 +1320,7 @@ namespace MD.PersianDateTime
 		public string ToLongTimeString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
-			string result = string.Format("{0:00}:{1:00}:{2:00}", Hour, Minute, Second);
+			var result = string.Format("{0:00}:{1:00}:{2:00}", Hour, Minute, Second);
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
@@ -1337,15 +1334,15 @@ namespace MD.PersianDateTime
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
 
-			PersianDateTime persianDateTimeNow = new PersianDateTime(DateTime.Now);
-			TimeSpan timeSpan = persianDateTimeNow - _dateTime;
+			var persianDateTimeNow = new PersianDateTime(DateTime.Now);
+			var timeSpan = persianDateTimeNow - _dateTime;
 			if (timeSpan.TotalDays > 90)
 				return ToShortDateTimeString();
 
-			string result = string.Empty;
+			var result = string.Empty;
 			if (timeSpan.TotalDays > 30)
 			{
-				double month = timeSpan.TotalDays / 30;
+				var month = timeSpan.TotalDays / 30;
 				if (month > 0)
 					result = string.Format("{0:0} ماه قبل", month);
 			}
@@ -1359,7 +1356,7 @@ namespace MD.PersianDateTime
 			}
 			else
 			{
-				double minute = timeSpan.TotalMinutes;
+				var minute = timeSpan.TotalMinutes;
 				if (minute <= 1) minute = 1;
 				result = string.Format("{0:0} دقیقه قبل", minute);
 			}
@@ -1447,7 +1444,7 @@ namespace MD.PersianDateTime
 			return new PersianDateTime(_dateTime.AddMilliseconds(miliseconds), EnglishNumber);
 		}
 
-		static string ToPersianNumber(string input)
+	    private static string ToPersianNumber(string input)
 		{
 			if (string.IsNullOrEmpty(input)) return null;
 			input = input.Replace("ي", "ی").Replace("ك", "ک");
@@ -1466,7 +1463,8 @@ namespace MD.PersianDateTime
 					.Replace("8", "۸")
 					.Replace("9", "۹");
 		}
-		static string ToEnglishNumber(string input)
+
+	    private static string ToEnglishNumber(string input)
 		{
 			if (string.IsNullOrEmpty(input)) return null;
 			input = input.Replace("ي", "ی").Replace("ك", "ک");
