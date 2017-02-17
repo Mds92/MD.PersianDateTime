@@ -13,5 +13,8 @@
   "licenseUrl": "http://www.gnu.org/licenses/gpl-3.0-standalone.html",
   "name": "MD.PersianDateTime.Core",
   "title": "PersianDateTime",
-  "version": "1.0.0-*"
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "xmlDoc": true
+  }
 }

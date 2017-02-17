@@ -18,15 +18,15 @@ namespace ConsoleApplication1
 
 		private static void Test1()
 		{
-			PersianDateTime persianDateTime = PersianDateTime.Parse("دوشنبه 05 مرداد 1395 ساعت 04:03");
+			var persianDateTime = PersianDateTime.Parse("دوشنبه 05 مرداد 1395 ساعت 04:03");
 			persianDateTime.EnglishNumber = true;
-			string serializedPersianDateTime = JsonConvert.SerializeObject(persianDateTime);
+			var serializedPersianDateTime = JsonConvert.SerializeObject(persianDateTime);
 
 			var persianDateTime2 = PersianDateTime.Parse(13901229);
 			var dateTIme1 = persianDateTime2.ToDateTime();
 			Console.WriteLine(dateTIme1.Equals(persianDateTime2));
 
-			PersianDateTime persianDateTime1 = JsonConvert.DeserializeObject<PersianDateTime>(serializedPersianDateTime);
+			var persianDateTime1 = JsonConvert.DeserializeObject<PersianDateTime>(serializedPersianDateTime);
 			Console.WriteLine(persianDateTime1.ToString("yyyy/MM/dd   HH:mm:ss:fff"));
 
 			persianDateTime = PersianDateTime.Parse(13901229);
@@ -71,7 +71,7 @@ namespace ConsoleApplication1
 			Console.WriteLine(persianDateTime);
 
 			persianDateTime = new PersianDateTime(DateTime.Now.AddDays(-8)) { EnglishNumber = true };
-			string timeFromNow = persianDateTime.ElapsedTime();
+			var timeFromNow = persianDateTime.ElapsedTime();
 			Console.WriteLine(timeFromNow);
 
 			persianDateTime = PersianDateTime.Today;
@@ -95,8 +95,8 @@ namespace ConsoleApplication1
 			Console.WriteLine("--------------------");
 			Console.WriteLine();
 
-			List<PersianDateTime> persianDateTimes = new List<PersianDateTime>();
-			for (int i = 0; i < 5; i++)
+			var persianDateTimes = new List<PersianDateTime>();
+			for (var i = 0; i < 5; i++)
 			{
 				persianDateTime = new PersianDateTime(DateTime.Now)
 				{
@@ -106,14 +106,14 @@ namespace ConsoleApplication1
 			}
 			persianDateTimes = persianDateTimes.OrderByDescending(q => q).ToList();
 
-			foreach (PersianDateTime item in persianDateTimes)
+			foreach (var item in persianDateTimes)
 				Console.WriteLine(item);
 
 		}
 
 		private static void Test2()
 		{
-			PersianDateTime persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 2000");
+			var persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 2000");
 			persianDateTime.EnglishNumber = true;
 			Console.WriteLine(persianDateTime);
 
@@ -132,7 +132,7 @@ namespace ConsoleApplication1
 
 		private static void Test3()
 		{
-			PersianDateTime persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 58");
+			var persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 58");
 			persianDateTime.EnglishNumber = true;
 			Console.WriteLine(persianDateTime);
 
