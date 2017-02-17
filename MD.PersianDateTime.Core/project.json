@@ -1,0 +1,17 @@
+{
+  "authors": [ "Mohammad Dayyan" ],
+  "copyright": "By Mohammad Dayyan, 0903-3339923",
+  "dependencies": {
+    "NETStandard.Library": "1.6.1"
+  },
+  "description": "C# library to use PersianCalendar as easy as DateTime",
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  },
+  "licenseUrl": "http://www.gnu.org/licenses/gpl-3.0-standalone.html",
+  "name": "MD.PersianDateTime.Core",
+  "title": "PersianDateTime",
+  "version": "1.0.0-*"
+}

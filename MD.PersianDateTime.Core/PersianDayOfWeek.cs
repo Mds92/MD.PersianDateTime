@@ -5,7 +5,7 @@
         /// <summary>
         /// شنبه
         /// </summary>
-        Saturday = 0,
+		Saturday = 0,
 
         /// <summary>
         /// یکشنبه
@@ -36,5 +36,5 @@
         /// جمعه
         /// </summary>
 		Friday = 6
-    }
+	}
 }
