@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <Authors>Mohammad Dayyan</Authors>
+    <Company />
+    <Description>PersianDateTime is equivalent of DateTime to use persian date time</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Copyright>Mohammad Dayyan - mds_soft@yahoo.com</Copyright>
+    <PackageProjectUrl>https://www.nuget.org/packages/MD.PersianDateTime.Core/</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.codeproject.com/info/cpol10.aspx</PackageLicenseUrl>
+    <PackageTags>c# persiandatetime datetime calendar</PackageTags>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <NeutralLanguage>en</NeutralLanguage>
+    <FileVersion>1.0.0.2</FileVersion>
+  </PropertyGroup>
+
+</Project>
