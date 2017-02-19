@@ -16,8 +16,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.PersianDateTime.Tests", "MD.PersianDateTime.Tests\MD.PersianDateTime.Tests.csproj", "{74BBAD3B-B3A9-4CC9-98E1-899E3DD1E2FC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{50088AED-8F36-4CF4-8D28-7385AE3A93B6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,10 +34,6 @@ Global
 		{74BBAD3B-B3A9-4CC9-98E1-899E3DD1E2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74BBAD3B-B3A9-4CC9-98E1-899E3DD1E2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74BBAD3B-B3A9-4CC9-98E1-899E3DD1E2FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50088AED-8F36-4CF4-8D28-7385AE3A93B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50088AED-8F36-4CF4-8D28-7385AE3A93B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50088AED-8F36-4CF4-8D28-7385AE3A93B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50088AED-8F36-4CF4-8D28-7385AE3A93B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
