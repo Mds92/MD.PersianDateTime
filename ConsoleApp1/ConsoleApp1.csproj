@@ -12,8 +12,4 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MD.PersianDateTime.Core\MD.PersianDateTime.Core.csproj" />
-  </ItemGroup>
-
 </Project>
