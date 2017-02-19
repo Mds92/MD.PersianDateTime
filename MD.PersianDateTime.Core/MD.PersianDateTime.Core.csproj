@@ -13,6 +13,7 @@
     <AssemblyVersion>1.0.0.2</AssemblyVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <FileVersion>1.0.0.2</FileVersion>
+    <Version>1.0.0.2</Version>
   </PropertyGroup>
 
 </Project>
