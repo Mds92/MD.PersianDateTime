@@ -1,14 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.PersianDateTime", "MD.PersianDateTime\MD.PersianDateTime.csproj", "{21DB3B69-D93B-4E7F-9F52-672546F0F15C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{CFBE0356-36CE-4764-A841-0D844CBCE04E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.PersianDateTime.Tests", "MD.PersianDateTime.Tests\MD.PersianDateTime.Tests.csproj", "{74BBAD3B-B3A9-4CC9-98E1-899E3DD1E2FC}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A53E45BD-6B6E-4603-8EC4-723CBABA9B60}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -16,9 +10,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A53E45
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MD.PersianDateTime.Core", "MD.PersianDateTime.Core\MD.PersianDateTime.Core.xproj", "{0E2D56EE-F8EA-4C9E-9B69-1D638D6973C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.PersianDateTime", "MD.PersianDateTime\MD.PersianDateTime.csproj", "{21DB3B69-D93B-4E7F-9F52-672546F0F15C}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.xproj", "{50088AED-8F36-4CF4-8D28-7385AE3A93B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{CFBE0356-36CE-4764-A841-0D844CBCE04E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.PersianDateTime.Tests", "MD.PersianDateTime.Tests\MD.PersianDateTime.Tests.csproj", "{74BBAD3B-B3A9-4CC9-98E1-899E3DD1E2FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MD.PersianDateTime.Core", "MD.PersianDateTime.Core\MD.PersianDateTime.Core.csproj", "{0E2D56EE-F8EA-4C9E-9B69-1D638D6973C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{50088AED-8F36-4CF4-8D28-7385AE3A93B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
