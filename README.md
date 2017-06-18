@@ -87,7 +87,7 @@ IsSqlDateTime \\ Check datetime and return a boolean if it is valid for SQL
 IsChristianDate \\ Check if the input string is a christian datetime
 ElapsedTime \\ Get past time until now
 Add*** \\ add day, month, year, ... to persian datetime
-Subtract \\ Subtract a datetime from current object
+Subtract*** \\ Subtract a datetime from current object
 ```
 ------------------------------------------
 ### Comparing
