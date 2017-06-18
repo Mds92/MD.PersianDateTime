@@ -109,7 +109,7 @@ You can use +  -  operators
 ```C#
 var persianDateTime1 = new PersianDateTime(1396, 03, 28);
 
-persianDateTime1 = persianDateTime1 + new TimeSpan(0, 0, 12); // add 12 days
-persianDateTime1 = persianDateTime1 - new TimeSpan(0, 0, 1); // subtract 1 day
+persianDateTime1 = persianDateTime1 + new TimeSpan(0, 0, 12); // add 12 minutes
+persianDateTime1 = persianDateTime1 - new TimeSpan(0, 0, 1); // subtract 1 minutes
 
 ```
