@@ -28,7 +28,7 @@ var persianDateTime9 = PersianDateTime.Parse("93-1-1 3:15 ب.ظ");
 var persianDateTime10 = PersianDateTime.Parse("جمعه 93/2/1 ساعت 3:2 ب.ظ");
 ```
 
-3.Today, Now
+3. Today, Now
 ```C#
 var persianDateTime1 = PersianDateTime.Now;
 var persianDateTime2 = PersianDateTime.Today; // without time
