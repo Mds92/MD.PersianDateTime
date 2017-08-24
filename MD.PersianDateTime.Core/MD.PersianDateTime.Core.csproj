@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <Authors>Mohammad Dayyan</Authors>
     <Company />
     <Description>PersianDateTime is equivalent of DateTime to use persian date time</Description>
@@ -10,10 +10,11 @@
     <PackageProjectUrl>https://www.nuget.org/packages/MD.PersianDateTime.Core/</PackageProjectUrl>
     <PackageLicenseUrl>http://www.codeproject.com/info/cpol10.aspx</PackageLicenseUrl>
     <PackageTags>c# persiandatetime datetime calendar</PackageTags>
-    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <NeutralLanguage>en</NeutralLanguage>
-    <FileVersion>1.0.0.2</FileVersion>
-    <Version>1.0.0.2</Version>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0.0</Version>
+    <PackageReleaseNotes>Move to dot net core 2</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
