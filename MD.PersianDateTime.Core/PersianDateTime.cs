@@ -1179,16 +1179,27 @@ namespace MD.PersianDateTime.Core
 		/// </summary>
 		public int ToShortDateInt()
 		{
-			var result = string.Format("{0:0000}{1:00}{2:00}", Year, Month, Day);
-			return int.Parse(result);
+			return int.Parse(string.Format("{0:0000}{1:00}{2:00}", Year, Month, Day));
 		}
 
-		/// <summary>
-		/// نمایش تاریخ به فرمتی مشابه زیر
-		/// <para />
-		/// جمعه، 14 آذر 1393
-		/// </summary>
-		public string ToLongDateString()
+	    /// <summary>
+	    /// در این فرمت نمایش ساعت و دقیقه و ثانیه در کنار هم با حذف علامت : تبدیل به عدد می شوند و نمایش داده می شود
+	    /// <para />
+	    /// مثال: 123452 
+	    /// <para />
+	    /// که به معنای ساعت 12 و 34 دقیقه و 52 ثانیه می باشد
+	    /// </summary>
+	    public int ToTimeInt()
+	    {
+	        return int.Parse(string.Format("{0:00}{1:00}{2:00}", Hour, Minute, Second));
+	    }
+
+        /// <summary>
+        /// نمایش تاریخ به فرمتی مشابه زیر
+        /// <para />
+        /// جمعه، 14 آذر 1393
+        /// </summary>
+        public string ToLongDateString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
 			var result = $"{GetLongDayOfWeekName}، {Day:00} {GetLongMonthName} {Year:0000}";
