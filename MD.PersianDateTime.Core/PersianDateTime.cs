@@ -1315,6 +1315,14 @@ namespace MD.PersianDateTime.Core
 	        return new TimeSpan(0, _dateTime.Hour, _dateTime.Minute, _dateTime.Second, _dateTime.Millisecond);
 	    }
 
+	    /// <summary>
+	    /// تنظیم کردن زمان
+	    /// </summary>
+	    public PersianDateTime SetTime(int hour, int minute, int second = 0, int miliSecond = 0)
+	    {
+	        return new PersianDateTime(Year, Month, Day, hour, minute, second, miliSecond);
+	    }
+
         /// <summary>
         /// کم کردن دو تاریخ از هم
         /// </summary>
