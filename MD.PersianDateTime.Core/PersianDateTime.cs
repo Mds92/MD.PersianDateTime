@@ -1307,10 +1307,18 @@ namespace MD.PersianDateTime.Core
 			return _dateTime;
 		}
 
-		/// <summary>
-		/// کم کردن دو تاریخ از هم
-		/// </summary>
-		public TimeSpan Subtract(PersianDateTime persianDateTime)
+	    /// <summary>
+	    /// گرفتن فقط زمان 
+	    /// </summary>
+	    public TimeSpan GetTime()
+	    {
+	        return new TimeSpan(0, _dateTime.Hour, _dateTime.Minute, _dateTime.Second, _dateTime.Millisecond);
+	    }
+
+        /// <summary>
+        /// کم کردن دو تاریخ از هم
+        /// </summary>
+        public TimeSpan Subtract(PersianDateTime persianDateTime)
 		{
 			return _dateTime - persianDateTime.ToDateTime();
 		}

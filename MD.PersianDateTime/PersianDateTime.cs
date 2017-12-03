@@ -1379,6 +1379,14 @@ namespace MD.PersianDateTime
 			return ToPersianNumber(result);
 		}
 
+        /// <summary>
+        /// گرفتن فقط زمان 
+        /// </summary>
+	    public TimeSpan GetTime()
+	    {
+	        return new TimeSpan(0, _dateTime.Hour, _dateTime.Minute, _dateTime.Second, _dateTime.Millisecond);
+        }
+
 		/// <summary>
 		/// تبدیل یه تاریخ میلادی
 		/// </summary>
