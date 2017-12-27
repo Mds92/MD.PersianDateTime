@@ -1275,6 +1275,19 @@ namespace MD.PersianDateTime
 	        return int.Parse(result);
 	    }
 
+	    /// <summary>
+	    /// در این فرمت نمایش ساعت و دقیقه در کنار هم با حذف علامت : تبدیل به عدد می شوند و نمایش داده می شود
+	    /// <para />
+	    /// مثال: 1234 
+	    /// <para />
+	    /// که به معنای ساعت 12 و 34 دقیقه می باشد
+	    /// </summary>
+	    public int ToTimeInt1()
+	    {
+	        var result = string.Format("{0:00}{1:00}", Hour, Minute);
+	        return int.Parse(result);
+	    }
+
         /// <summary>
         /// نمایش تاریخ به فرمتی مشابه زیر
         /// <para />

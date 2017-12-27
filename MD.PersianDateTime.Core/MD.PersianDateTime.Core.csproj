@@ -10,11 +10,11 @@
     <PackageProjectUrl>https://www.nuget.org/packages/MD.PersianDateTime.Core/</PackageProjectUrl>
     <PackageLicenseUrl>http://www.codeproject.com/info/cpol10.aspx</PackageLicenseUrl>
     <PackageTags>c# persiandatetime datetime calendar</PackageTags>
-    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <AssemblyVersion>2.2.1.0</AssemblyVersion>
     <NeutralLanguage>en</NeutralLanguage>
-    <FileVersion>2.1.0.0</FileVersion>
-    <Version>2.1.0.0</Version>
-    <PackageReleaseNotes>Add ToTimeInt method</PackageReleaseNotes>
+    <FileVersion>2.2.1.0</FileVersion>
+    <Version>2.2.1.0</Version>
+    <PackageReleaseNotes>Add To`TimeInt` method</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
