@@ -13,8 +13,9 @@
     <AssemblyVersion>2.2.1.0</AssemblyVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <FileVersion>2.2.1.0</FileVersion>
-    <Version>2.2.1.0</Version>
-    <PackageReleaseNotes>Add To`TimeInt` method</PackageReleaseNotes>
+    <Version>2.2.2.0</Version>
+    <PackageReleaseNotes>Add `ToHijri` Method, to convert date to Hijri calendar
+</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
