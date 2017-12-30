@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\StringBasedExt.cs" />
+    <Compile Include="HijriDateTime.cs" />
     <Compile Include="PersianDayOfWeek.cs" />
     <Compile Include="PersianDateTime.cs">
       <SubType>Code</SubType>

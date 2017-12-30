@@ -1416,10 +1416,69 @@ namespace MD.PersianDateTime
 			return _dateTime;
 		}
 
-		/// <summary>
-		/// کم کردن دو تاریخ از هم
-		/// </summary>
-		public TimeSpan Subtract(PersianDateTime persianDateTime)
+	    /// <summary>
+	    /// تبدیل یه تاریخ هجری قمری
+	    /// </summary>
+	    public HijriDateTime ToHijri(int hijriAdjustment = 0)
+	    {
+	        var hijriCalendar = new HijriCalendar
+	        {
+	            HijriAdjustment = hijriAdjustment
+	        };
+	        var month = hijriCalendar.GetMonth(_dateTime);
+	        var monthName = "";
+	        switch (month)
+	        {
+                case 1:
+                    monthName = "محرم";
+                    break;
+	            case 2:
+	                monthName = "صفر";
+	                break;
+	            case 3:
+	                monthName = "ربیع الاول";
+	                break;
+	            case 4:
+	                monthName = "ربیع الثانی";
+	                break;
+	            case 5:
+	                monthName = "جمادل الاولی";
+	                break;
+	            case 6:
+	                monthName = "جمادی الاخره";
+	                break;
+	            case 7:
+	                monthName = "رجب";
+	                break;
+	            case 8:
+	                monthName = "شعبان";
+	                break;
+	            case 9:
+	                monthName = "رمضان";
+	                break;
+	            case 10:
+	                monthName = "شوال";
+	                break;
+	            case 11:
+	                monthName = "ذوالقعده";
+	                break;
+	            case 12:
+	                monthName = "ذوالحجه";
+	                break;
+            }
+            return new HijriDateTime
+	        {
+                Day = hijriCalendar.GetDayOfMonth(_dateTime),
+	            Month = month,
+	            Year = hijriCalendar.GetYear(_dateTime),
+                MonthName = monthName
+            };
+	    }
+
+        /// <summary>
+        /// کم کردن دو تاریخ از هم
+        /// </summary>
+        public TimeSpan Subtract(PersianDateTime persianDateTime)
 		{
 			return _dateTime - persianDateTime.ToDateTime();
 		}
