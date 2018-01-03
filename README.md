@@ -59,7 +59,7 @@ DateTime datetime = persianDateTime.ToDateTime();
 ```C#
 var persianDateTimeNow = PersianDateTime.Now;
 persianDateTimeNow.EnglishNumber = true;
-var hijriDateTime = persianDateTimeNow.ToHijri();
+var hijriDateTime = persianDateTimeNow.ToHijri(-1);
 Console.WriteLine($"{hijriDateTime.Year}-{hijriDateTime.Month}-{hijriDateTime.Day}");
 ```
 
