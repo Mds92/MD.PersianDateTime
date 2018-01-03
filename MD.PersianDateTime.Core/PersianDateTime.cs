@@ -1312,18 +1312,18 @@ namespace MD.PersianDateTime.Core
 			return ToPersianNumber(result);
 		}
 
-		/// <summary>
-		/// تبدیل یه تاریخ میلادی
-		/// </summary>
-		public DateTime ToDateTime()
+        /// <summary>
+        /// تبدیل به تاریخ میلادی
+        /// </summary>
+        public DateTime ToDateTime()
 		{
 			return _dateTime;
 		}
 
-	    /// <summary>
-	    /// تبدیل یه تاریخ هجری قمری
-	    /// </summary>
-	    public HijriDateTime ToHijri(int hijriAdjustment = 0)
+        /// <summary>
+        /// تبدیل به تاریخ هجری قمری
+        /// </summary>
+        public HijriDateTime ToHijri(int hijriAdjustment = 0)
 	    {
 	        var hijriCalendar = new HijriCalendar
 	        {
