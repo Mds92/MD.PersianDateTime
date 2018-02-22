@@ -1204,12 +1204,38 @@ namespace MD.PersianDateTime
 			return int.Parse(result);
 		}
 
-		/// <summary>
-		/// نمایش تاریخ به فرمتی مشابه زیر
-		/// <para />
-		/// جمعه، 14 آذر 1393
-		/// </summary>
-		public string ToLongDateString()
+        /// <summary>
+        /// در این فرمت نمایش ساعت و دقیقه و ثانیه در کنار هم با حذف علامت : تبدیل به عدد می شوند و نمایش داده می شود
+        /// <para />
+        /// مثال: 123452 
+        /// <para />
+        /// که به معنای ساعت 12 و 34 دقیقه و 52 ثانیه می باشد
+        /// </summary>
+        public int ToTimeInt()
+	    {
+	        var result = string.Format("{0:00}{1:00}{2:00}", Hour, Minute, Second);
+	        return int.Parse(result);
+	    }
+
+	    /// <summary>
+	    /// در این فرمت نمایش ساعت و دقیقه در کنار هم با حذف علامت : تبدیل به عدد می شوند و نمایش داده می شود
+	    /// <para />
+	    /// مثال: 1234 
+	    /// <para />
+	    /// که به معنای ساعت 12 و 34 دقیقه می باشد
+	    /// </summary>
+	    public int ToTimeInt1()
+	    {
+	        var result = string.Format("{0:00}{1:00}", Hour, Minute);
+	        return int.Parse(result);
+	    }
+
+        /// <summary>
+        /// نمایش تاریخ به فرمتی مشابه زیر
+        /// <para />
+        /// جمعه، 14 آذر 1393
+        /// </summary>
+        public string ToLongDateString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
 			var result = string.Format("{0}، {1:00} {2} {3:0000}", GetLongDayOfWeekName, Day, GetLongMonthName, Year);
@@ -1308,18 +1334,93 @@ namespace MD.PersianDateTime
 			return ToPersianNumber(result);
 		}
 
-		/// <summary>
-		/// تبدیل یه تاریخ میلادی
-		/// </summary>
-		public DateTime ToDateTime()
+        /// <summary>
+        /// گرفتن فقط زمان 
+        /// </summary>
+	    public TimeSpan GetTime()
+	    {
+	        return new TimeSpan(0, _dateTime.Hour, _dateTime.Minute, _dateTime.Second, _dateTime.Millisecond);
+        }
+
+        /// <summary>
+        /// تنظیم کردن زمان
+        /// </summary>
+	    public PersianDateTime SetTime(int hour, int minute, int second = 0, int miliSecond = 0)
+	    {
+            return new PersianDateTime(Year, Month, Day, hour, minute, second, miliSecond);
+	    }
+
+        /// <summary>
+        /// تبدیل به تاریخ میلادی
+        /// </summary>
+        public DateTime ToDateTime()
 		{
 			return _dateTime;
 		}
 
-		/// <summary>
-		/// کم کردن دو تاریخ از هم
-		/// </summary>
-		public TimeSpan Subtract(PersianDateTime persianDateTime)
+        /// <summary>
+        /// تبدیل به تاریخ هجری قمری
+        /// </summary>
+        public HijriDateTime ToHijri(int hijriAdjustment = 0)
+	    {
+	        var hijriCalendar = new HijriCalendar
+	        {
+	            HijriAdjustment = hijriAdjustment
+	        };
+	        var month = hijriCalendar.GetMonth(_dateTime);
+	        var monthName = "";
+	        switch (month)
+	        {
+                case 1:
+                    monthName = "محرم";
+                    break;
+	            case 2:
+	                monthName = "صفر";
+	                break;
+	            case 3:
+	                monthName = "ربیع الاول";
+	                break;
+	            case 4:
+	                monthName = "ربیع الثانی";
+	                break;
+	            case 5:
+	                monthName = "جمادل الاولی";
+	                break;
+	            case 6:
+	                monthName = "جمادی الاخره";
+	                break;
+	            case 7:
+	                monthName = "رجب";
+	                break;
+	            case 8:
+	                monthName = "شعبان";
+	                break;
+	            case 9:
+	                monthName = "رمضان";
+	                break;
+	            case 10:
+	                monthName = "شوال";
+	                break;
+	            case 11:
+	                monthName = "ذوالقعده";
+	                break;
+	            case 12:
+	                monthName = "ذوالحجه";
+	                break;
+            }
+            return new HijriDateTime
+	        {
+                Day = hijriCalendar.GetDayOfMonth(_dateTime),
+	            Month = month,
+	            Year = hijriCalendar.GetYear(_dateTime),
+                MonthName = monthName
+            };
+	    }
+
+        /// <summary>
+        /// کم کردن دو تاریخ از هم
+        /// </summary>
+        public TimeSpan Subtract(PersianDateTime persianDateTime)
 		{
 			return _dateTime - persianDateTime.ToDateTime();
 		}

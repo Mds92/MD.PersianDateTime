@@ -55,6 +55,15 @@ Also you can use `ToDateTime` method
 DateTime datetime = persianDateTime.ToDateTime();
 ```
 ------------------------------------------
+### Get HijriDate
+```C#
+var persianDateTimeNow = PersianDateTime.Now;
+persianDateTimeNow.EnglishNumber = true;
+var hijriDateTime = persianDateTimeNow.ToHijri(-1);
+Console.WriteLine($"{hijriDateTime.Year}-{hijriDateTime.Month}-{hijriDateTime.Day}");
+```
+
+------------------------------------------
 ### Formats
 you can use the following formats in `ToString` method.
 ```C#

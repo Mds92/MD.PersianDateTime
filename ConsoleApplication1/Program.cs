@@ -10,9 +10,11 @@ namespace ConsoleApplication1
 	{
 		private static void Main()
 		{
-			Test1();
-			Test2();
-			Test3();
+            //Test1();
+            //Test2();
+            //Test3();
+            //Test4();
+		    Test5();
 			Console.ReadKey();
 		}
 
@@ -144,5 +146,22 @@ namespace ConsoleApplication1
 			persianDateTime.EnglishNumber = true;
 			Console.WriteLine(persianDateTime);
 		}
-	}
+
+        private static void Test4()
+		{
+			var persianDateTime = PersianDateTime.Parse("سه شنبه, ۲۵ اسفند ۹۴, 09:20:30");
+			persianDateTime.EnglishNumber = true;
+			Console.WriteLine(persianDateTime.ToShortDateInt());
+			Console.WriteLine(persianDateTime.ToTimeInt());
+		}
+
+	    private static void Test5()
+	    {
+	        var persianDateTime = PersianDateTime.Now;
+	        persianDateTime.EnglishNumber = true;
+	        var hijriDateTime = persianDateTime.ToHijri(-1);
+	        var result = $"{hijriDateTime.Day} - {hijriDateTime.MonthName} - {hijriDateTime.Year}";
+            Console.WriteLine(result);
+	    }
+    }
 }
