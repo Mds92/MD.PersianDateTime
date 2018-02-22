@@ -14,7 +14,8 @@ namespace ConsoleApplication1
             //Test2();
             //Test3();
             //Test4();
-		    Test5();
+		    //Test5();
+		    Test6();
 			Console.ReadKey();
 		}
 
@@ -162,6 +163,13 @@ namespace ConsoleApplication1
 	        var hijriDateTime = persianDateTime.ToHijri(-1);
 	        var result = $"{hijriDateTime.Day} - {hijriDateTime.MonthName} - {hijriDateTime.Year}";
             Console.WriteLine(result);
+	    }
+
+	    private static void Test6()
+	    {
+	        var persianDateTime = PersianDateTime.Now;
+	        var oneYearBeforeDateTime = PersianDateTime.Now.AddMonths(-6);
+	        Console.WriteLine(oneYearBeforeDateTime.MonthDifference(persianDateTime));
 	    }
     }
 }
