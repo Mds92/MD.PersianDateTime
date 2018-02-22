@@ -13,9 +13,9 @@
     <AssemblyVersion>2.2.1.0</AssemblyVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <FileVersion>2.2.1.0</FileVersion>
-    <Version>2.2.3.0</Version>
-    <PackageReleaseNotes>Add `ToHijri` Method, to convert date to Hijri calendar
-</PackageReleaseNotes>
+    <Version>2.2.4.0</Version>
+    <PackageReleaseNotes>- Add `GetPersianMonthName` Method.
+- Add `MonthDifference` Extension Method</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

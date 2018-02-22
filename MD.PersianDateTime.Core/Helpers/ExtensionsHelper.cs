@@ -3,7 +3,7 @@ using System.Text;
 
 namespace MD.PersianDateTime.Core
 {
-    internal static class ExtensionsHelper
+    public static class ExtensionsHelper
     {
         /// <summary>
         /// Convert all persian and arabic digit to english in any string  
@@ -11,7 +11,7 @@ namespace MD.PersianDateTime.Core
         /// </summary>
         /// <param name="inputString">input string that maybe contain persian or arabic digit</param>
         /// <returns>a string with english digit</returns>
-        public static string ConvertDigitsToLatin(string inputString)
+        internal static string ConvertDigitsToLatin(string inputString)
         {
             var sb = new StringBuilder();
 
