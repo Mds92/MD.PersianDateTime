@@ -44,7 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\StringBasedExt.cs" />
+    <Compile Include="Helpers\ExtensionsHelper.cs" />
     <Compile Include="HijriDateTime.cs" />
     <Compile Include="PersianDayOfWeek.cs" />
     <Compile Include="PersianDateTime.cs">
