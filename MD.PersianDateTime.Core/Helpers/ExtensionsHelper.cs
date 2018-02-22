@@ -1,8 +1,9 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace MD.PersianDateTime.Core
 {
-    internal static class StringHelper
+    internal static class ExtensionsHelper
     {
         /// <summary>
         /// Convert all persian and arabic digit to english in any string  
@@ -66,6 +67,15 @@ namespace MD.PersianDateTime.Core
 	        }
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// تعداد ماه اختلافی بین دو تاریخ را بر میگرداند
+        /// </summary>
+        /// <returns>تعداد ماه</returns>
+        public static int MonthDifference(this PersianDateTime endPersianDateTime, PersianDateTime startPersianDateTime)
+        {
+            return Math.Abs(endPersianDateTime.Month - startPersianDateTime.Month + 12 * (endPersianDateTime.Year - startPersianDateTime.Year));
         }
     }
 }

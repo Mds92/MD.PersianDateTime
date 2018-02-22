@@ -1,8 +1,9 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace MD.PersianDateTime
 {
-    internal static class StringHelper
+    public static class ExtensionsHelper
     {
         /// <summary>
         /// Convert all persian and arabic digit to english in any string  
@@ -10,7 +11,7 @@ namespace MD.PersianDateTime
         /// </summary>
         /// <param name="inputString">input string that maybe contain persian or arabic digit</param>
         /// <returns>a string with english digit</returns>
-        public static string ConvertDigitsToLatin(string inputString)
+        internal static string ConvertDigitsToLatin(string inputString)
         {
             var sb = new StringBuilder();
 
@@ -67,5 +68,22 @@ namespace MD.PersianDateTime
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// تعداد ماه اختلافی بین دو تاریخ را بر میگرداند
+        /// </summary>
+        /// <returns>تعداد ماه</returns>
+        public static int MonthDifference(this PersianDateTime endPersianDateTime, PersianDateTime startPersianDateTime)
+        {
+            return Math.Abs(endPersianDateTime.Month - startPersianDateTime.Month + 12 * (endPersianDateTime.Year - startPersianDateTime.Year));
+        }
     }
+}
+
+// برای خطا نگرفتن روی اکستنشن متدها
+namespace System.Runtime.CompilerServices
+{
+    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class
+                                              | AttributeTargets.Method)]
+    public sealed class ExtensionAttribute : Attribute { }
 }

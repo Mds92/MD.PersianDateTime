@@ -6,11 +6,11 @@ using System.Text.RegularExpressions;
 
 namespace MD.PersianDateTime
 {
-	/// <summary>
-	/// Created By Mohammad Dayyan, mds_soft@yahoo.com
-	/// 1393/09/14
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// Created By Mohammad Dayyan, mds_soft@yahoo.com
+    /// 1393/09/14
+    /// </summary>
+    [Serializable]
 	public struct PersianDateTime :
 		ISerializable,
 		IComparable<PersianDateTime>, IComparable<DateTime>,
@@ -319,73 +319,15 @@ namespace MD.PersianDateTime
 			}
 		}
 
-		/// <summary>
-		/// نام کامل ماه
-		/// </summary>
-		public string GetLongMonthName
-		{
-			get
-			{
-				string monthName = null;
-				switch (Month)
-				{
-					case 1:
-						monthName = "فروردین";
-						break;
+	    /// <summary>
+	    /// نام کامل ماه
+	    /// </summary>
+	    public string GetLongMonthName => GetPersianMonthNamePrivate(Month);
 
-					case 2:
-						monthName = "اردیبهشت";
-						break;
-
-					case 3:
-						monthName = "خرداد";
-						break;
-
-					case 4:
-						monthName = "تیر";
-						break;
-
-					case 5:
-						monthName = "مرداد";
-						break;
-
-					case 6:
-						monthName = "شهریور";
-						break;
-
-					case 7:
-						monthName = "مهر";
-						break;
-
-					case 8:
-						monthName = "آبان";
-						break;
-
-					case 9:
-						monthName = "آذر";
-						break;
-
-					case 10:
-						monthName = "دی";
-						break;
-
-					case 11:
-						monthName = "بهمن";
-						break;
-
-					case 12:
-						monthName = "اسفند";
-						break;
-				}
-
-				return monthName;
-			}
-		}
-
-		/// <summary>
-		/// سال دو رقمی
-		/// </summary>
-		public int GetShortYear
+        /// <summary>
+        /// سال دو رقمی
+        /// </summary>
+        public int GetShortYear
 		{
 			get { return Year % 100; }
 		}
@@ -786,7 +728,7 @@ namespace MD.PersianDateTime
 		#region operators
 
 		/// <summary>
-		/// تبدیل خودکار بع دیت تایم میلادی
+		/// تبدیل خودکار به دیت تایم میلادی
 		/// </summary>
 		public static implicit operator DateTime(PersianDateTime persiandateTime)
 		{
@@ -923,7 +865,7 @@ namespace MD.PersianDateTime
 		public static PersianDateTime Parse(string persianDateTimeInString, string dateSeperatorPattern = @"\/|-")
 		{
 			//Convert persian and arabic digit to english to avoid throwing exception in Parse method
-			persianDateTimeInString = StringHelper.ConvertDigitsToLatin(persianDateTimeInString);
+			persianDateTimeInString = ExtensionsHelper.ConvertDigitsToLatin(persianDateTimeInString);
 
 			string month = "", year, day,
 				hour = "0",
@@ -1446,7 +1388,16 @@ namespace MD.PersianDateTime
 			return new PersianDateTime(_dateTime.AddMilliseconds(miliseconds), EnglishNumber);
 		}
 
-	    private static string ToPersianNumber(string input)
+	    /// <summary>
+	    /// نام فارسی ماه بر اساس شماره ماه
+	    /// </summary>
+	    /// <returns>نام فارسی ماه</returns>
+	    public static string GetPersianMonthName(int monthNumber)
+	    {
+	        return GetPersianMonthNamePrivate(monthNumber);
+	    }
+
+        private static string ToPersianNumber(string input)
 		{
 			if (string.IsNullOrEmpty(input)) return null;
 			input = input.Replace("ي", "ی").Replace("ك", "ک");
@@ -1486,6 +1437,62 @@ namespace MD.PersianDateTime
 				.Replace("۹", "9");
 		}
 
-		#endregion
-	}
+	    private static string GetPersianMonthNamePrivate(int monthNumber)
+	    {
+	        var monthName = "";
+	        switch (monthNumber)
+	        {
+	            case 1:
+	                monthName = "فروردین";
+	                break;
+
+	            case 2:
+	                monthName = "اردیبهشت";
+	                break;
+
+	            case 3:
+	                monthName = "خرداد";
+	                break;
+
+	            case 4:
+	                monthName = "تیر";
+	                break;
+
+	            case 5:
+	                monthName = "مرداد";
+	                break;
+
+	            case 6:
+	                monthName = "شهریور";
+	                break;
+
+	            case 7:
+	                monthName = "مهر";
+	                break;
+
+	            case 8:
+	                monthName = "آبان";
+	                break;
+
+	            case 9:
+	                monthName = "آذر";
+	                break;
+
+	            case 10:
+	                monthName = "دی";
+	                break;
+
+	            case 11:
+	                monthName = "بهمن";
+	                break;
+
+	            case 12:
+	                monthName = "اسفند";
+	                break;
+	        }
+	        return monthName;
+	    }
+
+        #endregion
+    }
 }

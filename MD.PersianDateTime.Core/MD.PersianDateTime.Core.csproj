@@ -17,4 +17,8 @@
     <PackageReleaseNotes>Move to dot net core 2</PackageReleaseNotes>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp2.0\MD.PersianDateTime.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>
