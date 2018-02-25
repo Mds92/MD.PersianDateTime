@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 
 namespace MD.PersianDateTime.Core
 {
-	/// <summary>
-	/// Created By Mohammad Dayyan, mds_soft@yahoo.com
-	/// 1393/09/14
-	/// </summary>
+    /// <summary>
+    /// Created By Mohammad Dayyan, @mdssoft, mds_soft@yahoo.com
+    /// 1396/12/06
+    /// </summary>
     [Serializable]
     public struct PersianDateTime :
-		IComparable<PersianDateTime>, IComparable<DateTime>,
+	    ISerializable, IFormattable,
+        IComparable<PersianDateTime>, IComparable<DateTime>,
 		IEquatable<PersianDateTime>, IEquatable<DateTime>
 	{
 		#region properties and fields
@@ -623,10 +625,7 @@ namespace MD.PersianDateTime.Core
 		/// </summary>
 		public override string ToString()
 		{
-			//if (_dateTime <= DateTime.MinValue) return string.Empty;
-			var result = $"{Year:0000}/{Month:00}/{Day:00}   {Hour:00}:{Minute:00}:{Second:00}";
-			if (EnglishNumber) return result;
-			return ToPersianNumber(result);
+			return ToString();
 		}
 
 		public override bool Equals(object obj)
@@ -736,13 +735,23 @@ namespace MD.PersianDateTime.Core
 			return dateTime1 - dateTime2;
 		}
 
-		#endregion
+        #endregion
 
-		#endregion
+        #endregion
 
-		#region IComparable
+	    #region ISerializable
 
-		public bool Equals(PersianDateTime other)
+	    public void GetObjectData(SerializationInfo info, StreamingContext context)
+	    {
+	        info.AddValue("DateTime", ToDateTime());
+	        info.AddValue("EnglishNumber", EnglishNumber);
+	    }
+
+	    #endregion
+
+        #region IComparable
+
+        public bool Equals(PersianDateTime other)
 		{
 			return Year == other.Year && Month == other.Month && Day == other.Day &&
 				Hour == other.Hour && Minute == other.Minute && Second == other.Second && MiliSecond == other.MiliSecond;
@@ -1004,11 +1013,10 @@ namespace MD.PersianDateTime.Core
 		/// <para />
 		/// t: حرف اول از ب.ظ یا ق.ظ
 		/// </summary>
-		public string ToString(string format)
+		public string ToString(string format, IFormatProvider fp = null)
 		{
-			//if (_dateTime <= DateTime.MinValue) return null;
-
-			var dateTimeString = format.Trim();
+		    if (string.IsNullOrEmpty(format)) format = "yyyy/MM/dd   HH:mm:ss";
+            var dateTimeString = format.Trim();
 
 			dateTimeString = dateTimeString.Replace("yyyy", Year.ToString(CultureInfo.InvariantCulture));
 			dateTimeString = dateTimeString.Replace("yy", GetShortYear.ToString("00", CultureInfo.InvariantCulture));
@@ -1346,10 +1354,19 @@ namespace MD.PersianDateTime.Core
 			return _dateTime - persianDateTime.ToDateTime();
 		}
 
-		/// <summary>
-		/// اضافه کردن مدت زمانی به تاریخ
-		/// </summary>
-		public PersianDateTime Add(TimeSpan timeSpan)
+	    /// <summary>
+	    /// تعداد ماه اختلافی با تاریخ دیگری را بر میگرداند
+	    /// </summary>
+	    /// <returns>تعداد ماه</returns>
+	    public int MonthDifference(DateTime dateTime)
+	    {
+	        return Math.Abs(dateTime.Month - _dateTime.Month + 12 * (dateTime.Year - _dateTime.Year));
+	    }
+
+        /// <summary>
+        /// اضافه کردن مدت زمانی به تاریخ
+        /// </summary>
+        public PersianDateTime Add(TimeSpan timeSpan)
 		{
 			return new PersianDateTime(_dateTime.Add(timeSpan), EnglishNumber);
 		}

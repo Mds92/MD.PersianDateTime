@@ -10,12 +10,12 @@
     <PackageProjectUrl>https://www.nuget.org/packages/MD.PersianDateTime.Core/</PackageProjectUrl>
     <PackageLicenseUrl>http://www.codeproject.com/info/cpol10.aspx</PackageLicenseUrl>
     <PackageTags>c# persiandatetime datetime calendar</PackageTags>
-    <AssemblyVersion>2.2.1.0</AssemblyVersion>
+    <AssemblyVersion>2.3.1.0</AssemblyVersion>
     <NeutralLanguage>en</NeutralLanguage>
-    <FileVersion>2.2.1.0</FileVersion>
-    <Version>2.2.4.0</Version>
-    <PackageReleaseNotes>- Add `GetPersianMonthName` Method.
-- Add `MonthDifference` Extension Method</PackageReleaseNotes>
+    <FileVersion>2.3.1.0</FileVersion>
+    <Version>2.3.1</Version>
+    <PackageReleaseNotes>- Implement `IFormattable`
+- Add `MonthDifference` Method</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

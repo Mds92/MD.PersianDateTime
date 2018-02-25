@@ -7,13 +7,13 @@ using System.Text.RegularExpressions;
 namespace MD.PersianDateTime
 {
     /// <summary>
-    /// Created By Mohammad Dayyan, mds_soft@yahoo.com
+    /// Created By Mohammad Dayyan, @mdssoft, mds_soft@yahoo.com
     /// 1393/09/14
     /// </summary>
     [Serializable]
 	public struct PersianDateTime :
-		ISerializable,
-		IComparable<PersianDateTime>, IComparable<DateTime>,
+		ISerializable, IFormattable, 
+        IComparable<PersianDateTime>, IComparable<DateTime>,
 		IEquatable<PersianDateTime>, IEquatable<DateTime>
 	{
 		#region properties and fields
@@ -689,10 +689,7 @@ namespace MD.PersianDateTime
 		/// </summary>
 		public override string ToString()
 		{
-			//if (_dateTime <= DateTime.MinValue) return string.Empty;
-			var result = string.Format("{0:0000}/{1:00}/{2:00}   {3:00}:{4:00}:{5:00}", Year, Month, Day, Hour, Minute, Second);
-			if (EnglishNumber) return result;
-			return ToPersianNumber(result);
+			return ToString("");
 		}
 
 		public override bool Equals(object obj)
@@ -1082,11 +1079,10 @@ namespace MD.PersianDateTime
 		/// <para />
 		/// t: حرف اول از ب.ظ یا ق.ظ
 		/// </summary>
-		public string ToString(string format)
+		public string ToString(string format, IFormatProvider fp = null)
 		{
-			//if (_dateTime <= DateTime.MinValue) return null;
-
-			var dateTimeString = format.Trim();
+		    if (string.IsNullOrEmpty(format)) format = "yyyy/MM/dd   HH:mm:ss";
+            var dateTimeString = format.Trim();
 
 			dateTimeString = dateTimeString.Replace("yyyy", Year.ToString(CultureInfo.InvariantCulture));
 			dateTimeString = dateTimeString.Replace("yy", GetShortYear.ToString("00", CultureInfo.InvariantCulture));
@@ -1425,10 +1421,19 @@ namespace MD.PersianDateTime
 			return _dateTime - persianDateTime.ToDateTime();
 		}
 
-		/// <summary>
-		/// اضافه کردن مدت زمانی به تاریخ
-		/// </summary>
-		public PersianDateTime Add(TimeSpan timeSpan)
+	    /// <summary>
+	    /// تعداد ماه اختلافی با تاریخ دیگری را بر میگرداند
+	    /// </summary>
+	    /// <returns>تعداد ماه</returns>
+	    public int MonthDifference(DateTime dateTime)
+	    {
+            return Math.Abs(dateTime.Month - _dateTime.Month + 12 * (dateTime.Year - _dateTime.Year));
+        }
+
+        /// <summary>
+        /// اضافه کردن مدت زمانی به تاریخ
+        /// </summary>
+        public PersianDateTime Add(TimeSpan timeSpan)
 		{
 			return new PersianDateTime(_dateTime.Add(timeSpan), EnglishNumber);
 		}

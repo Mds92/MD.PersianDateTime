@@ -16,6 +16,7 @@ namespace ConsoleApplication1
             //Test4();
 		    //Test5();
 		    Test6();
+		    Test7();
 			Console.ReadKey();
 		}
 
@@ -168,8 +169,17 @@ namespace ConsoleApplication1
 	    private static void Test6()
 	    {
 	        var persianDateTime = PersianDateTime.Now;
-	        var oneYearBeforeDateTime = PersianDateTime.Now.AddMonths(-6);
+	        persianDateTime.EnglishNumber = true;
+            var oneYearBeforeDateTime = PersianDateTime.Now.AddMonths(-6);
 	        Console.WriteLine(oneYearBeforeDateTime.MonthDifference(persianDateTime));
+	    }
+
+	    private static void Test7()
+	    {
+            // IFormattable Test
+            var persianDateTime = PersianDateTime.Now;
+	        persianDateTime.EnglishNumber = true;
+	        Console.WriteLine("{0:yyyy-mm-dd}", persianDateTime);
 	    }
     }
 }
