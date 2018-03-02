@@ -625,7 +625,7 @@ namespace MD.PersianDateTime.Core
 		/// </summary>
 		public override string ToString()
 		{
-			return ToString();
+			return ToString("");
 		}
 
 		public override bool Equals(object obj)
