@@ -764,7 +764,7 @@ namespace MD.PersianDateTime.Core
 
 		#endregion
 
-		#region methods
+		#region Methods
 
 		/// <summary>
 		/// تاریخ شروع ماه رمضان 
@@ -964,7 +964,44 @@ namespace MD.PersianDateTime.Core
 			}
 		}
 
-	    private static readonly List<string> GregorianWeekDayNames = new List<string> { "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" };
+	    /// <summary>
+	    /// پارس کردن عددی در فرمت تاریخ و زمان شمسی
+	    /// <para />
+	    /// همانند 1396122310223246
+	    /// </summary>
+	    public static PersianDateTime Parse(long numericPersianDateTime)
+	    {
+	        if (numericPersianDateTime.ToString().Length != 16)
+	            throw new InvalidCastException("Numeric persian date time must have a format like 1396122310223246.");
+	        var year = numericPersianDateTime / 1000000000000;
+	        var month = numericPersianDateTime / 10000000000 % 100;
+	        var day = numericPersianDateTime / 100000000 % 100;
+	        var hour = numericPersianDateTime / 1000000 % 100;
+	        var minute = numericPersianDateTime / 10000 % 100;
+	        var second = numericPersianDateTime / 100 % 100;
+	        var millisecond = numericPersianDateTime % 100;
+	        return new PersianDateTime((int)year, (int)month, (int)day, (int)hour, (int)minute, (int)second, (int)millisecond);
+	    }
+	    /// <summary>
+	    /// پارس کردن عددی در فرمت تاریخ و زمان شمسی
+	    /// <para />
+	    /// همانند 1396122310223246
+	    /// </summary>
+	    public static bool TryParse(long numericPersianDateTime, out PersianDateTime result)
+	    {
+	        try
+	        {
+	            result = Parse(numericPersianDateTime);
+	            return true;
+	        }
+	        catch
+	        {
+	            result = MinValue;
+	            return false;
+	        }
+	    }
+
+        private static readonly List<string> GregorianWeekDayNames = new List<string> { "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" };
 	    private static readonly List<string> GregorianMonthNames = new List<string> { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" };
 	    private static readonly List<string> PmAm = new List<string> { "pm", "am" };
 
@@ -1134,13 +1171,24 @@ namespace MD.PersianDateTime.Core
 		}
 
 	    /// <summary>
-	    /// در این فرمت نمایش ساعت و دقیقه و ثانیه در کنار هم با حذف علامت : تبدیل به عدد می شوند و نمایش داده می شود
+	    /// نمایش تاریخ و ساعت تا دقت میلی ثانیه به صورت عدد
 	    /// <para />
-	    /// مثال: 123452 
-	    /// <para />
-	    /// که به معنای ساعت 12 و 34 دقیقه و 52 ثانیه می باشد
+	    /// 1396122310324655
 	    /// </summary>
-	    public int ToTimeInt()
+	    public long ToLongDateTimeInt()
+	    {
+	        var result = string.Format("{0:0000}{1:00}{2:00}{3:00}{4:00}{5:00}{6:00}", Year, Month, Day, Hour, Minute, Second, MiliSecond);
+	        return long.Parse(result);
+	    }
+
+        /// <summary>
+        /// در این فرمت نمایش ساعت و دقیقه و ثانیه در کنار هم با حذف علامت : تبدیل به عدد می شوند و نمایش داده می شود
+        /// <para />
+        /// مثال: 123452 
+        /// <para />
+        /// که به معنای ساعت 12 و 34 دقیقه و 52 ثانیه می باشد
+        /// </summary>
+        public int ToTimeInt()
 	    {
 	        return int.Parse(string.Format("{0:00}{1:00}{2:00}", Hour, Minute, Second));
 	    }

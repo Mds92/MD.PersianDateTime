@@ -15,8 +15,9 @@ namespace ConsoleApplication1
             //Test3();
             //Test4();
 		    //Test5();
-		    Test6();
-		    Test7();
+		    //Test6();
+		    //Test7();
+		    Test8();
 			Console.ReadKey();
 		}
 
@@ -181,5 +182,15 @@ namespace ConsoleApplication1
 	        persianDateTime.EnglishNumber = true;
 	        Console.WriteLine("{0:yyyy-mm-dd}", persianDateTime);
 	    }
+
+	    private static void Test8()
+	    {
+	        var longDateTime = PersianDateTime.Now.ToLongDateTimeInt();
+	        Console.WriteLine(longDateTime);
+	        const long longPersianDateTime = 1396122420423655;
+	        var persianDateTime = PersianDateTime.Parse(longPersianDateTime);
+	        persianDateTime.EnglishNumber = true;
+            Console.WriteLine(persianDateTime.ToString());
+        }
     }
 }
