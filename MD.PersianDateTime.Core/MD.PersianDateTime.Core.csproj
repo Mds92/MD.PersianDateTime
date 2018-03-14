@@ -7,14 +7,17 @@
     <Description>PersianDateTime is equivalent of DateTime to use persian date time</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Copyright>Mohammad Dayyan - mds_soft@yahoo.com</Copyright>
-    <PackageProjectUrl>https://www.nuget.org/packages/MD.PersianDateTime.Core/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Mds92/MD.PersianDateTime</PackageProjectUrl>
     <PackageLicenseUrl>http://www.codeproject.com/info/cpol10.aspx</PackageLicenseUrl>
     <PackageTags>c# persiandatetime datetime calendar</PackageTags>
-    <AssemblyVersion>2.3.3.0</AssemblyVersion>
+    <AssemblyVersion>2.3.4.0</AssemblyVersion>
     <NeutralLanguage>en</NeutralLanguage>
-    <FileVersion>2.3.3.0</FileVersion>
-    <Version>2.3.3</Version>
-    <PackageReleaseNotes>Fix a bug in Debug mode</PackageReleaseNotes>
+    <FileVersion>2.3.4.0</FileVersion>
+    <Version>2.3.4</Version>
+    <PackageReleaseNotes>- Add `ToLongDateTimeInt` method
+- Add `Parse` methods for long numbers</PackageReleaseNotes>
+    <PackageIconUrl>http://www.codeproject.com/KB/library/850359/PersianDateTimePng.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/Mds92/MD.PersianDateTime</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

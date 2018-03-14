@@ -828,7 +828,7 @@ namespace MD.PersianDateTime
 
 		#endregion
 
-		#region methods
+		#region Methods
 
 		/// <summary>
 		/// تاریخ شروع ماه رمضان 
