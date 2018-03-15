@@ -1033,25 +1033,25 @@ namespace MD.PersianDateTime
 	    /// <summary>
 	    /// پارس کردن عددی در فرمت تاریخ و زمان شمسی
 	    /// <para />
-	    /// همانند 1396122310223246
+	    /// همانند 13961223072132004
 	    /// </summary>
 	    public static PersianDateTime Parse(long numericPersianDateTime)
 	    {
-	        if (numericPersianDateTime.ToString().Length != 16)
+	        if (numericPersianDateTime.ToString().Length != 17)
 	            throw new InvalidCastException("Numeric persian date time must have a format like 1396122310223246.");
-	        var year = numericPersianDateTime / 1000000000000;
-	        var month = numericPersianDateTime / 10000000000 % 100;
-	        var day = numericPersianDateTime / 100000000 % 100;
-	        var hour = numericPersianDateTime / 1000000 % 100;
-	        var minute = numericPersianDateTime / 10000 % 100;
-	        var second = numericPersianDateTime / 100 % 100;
-	        var millisecond = numericPersianDateTime % 100;
+	        var year = numericPersianDateTime / 10000000000000;
+	        var month = numericPersianDateTime / 100000000000 % 100;
+	        var day = numericPersianDateTime / 1000000000 % 100;
+	        var hour = numericPersianDateTime / 10000000 % 100;
+	        var minute = numericPersianDateTime / 100000 % 100;
+	        var second = numericPersianDateTime / 1000 % 100;
+	        var millisecond = numericPersianDateTime % 1000;
 	        return new PersianDateTime((int)year, (int)month, (int)day, (int)hour, (int)minute, (int)second, (int)millisecond);
 	    }
         /// <summary>
         /// پارس کردن عددی در فرمت تاریخ و زمان شمسی
         /// <para />
-        /// همانند 1396122310223246
+        /// همانند 13961223102232461
         /// </summary>
         public static bool TryParse(long numericPersianDateTime, out PersianDateTime result)
 	    {
@@ -1244,7 +1244,7 @@ namespace MD.PersianDateTime
         /// </summary>
         public long ToLongDateTimeInt()
 	    {
-	        var result = string.Format("{0:0000}{1:00}{2:00}{3:00}{4:00}{5:00}{6:00}", Year, Month, Day, Hour, Minute, Second, MiliSecond);
+	        var result = string.Format("{0:0000}{1:00}{2:00}{3:00}{4:00}{5:00}{6:000}", Year, Month, Day, Hour, Minute, Second, MiliSecond);
 	        return long.Parse(result);
 	    }
 

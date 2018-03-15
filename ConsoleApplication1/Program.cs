@@ -187,8 +187,7 @@ namespace ConsoleApplication1
 	    {
 	        var longDateTime = PersianDateTime.Now.ToLongDateTimeInt();
 	        Console.WriteLine(longDateTime);
-	        const long longPersianDateTime = 1396122420423655;
-	        var persianDateTime = PersianDateTime.Parse(longPersianDateTime);
+	        var persianDateTime = PersianDateTime.Parse(longDateTime);
 	        persianDateTime.EnglishNumber = true;
             Console.WriteLine(persianDateTime.ToString());
         }

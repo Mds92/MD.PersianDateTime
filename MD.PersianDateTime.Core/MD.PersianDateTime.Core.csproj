@@ -10,12 +10,13 @@
     <PackageProjectUrl>https://github.com/Mds92/MD.PersianDateTime</PackageProjectUrl>
     <PackageLicenseUrl>http://www.codeproject.com/info/cpol10.aspx</PackageLicenseUrl>
     <PackageTags>c# persiandatetime datetime calendar</PackageTags>
-    <AssemblyVersion>2.3.4.0</AssemblyVersion>
+    <AssemblyVersion>2.3.5.0</AssemblyVersion>
     <NeutralLanguage>en</NeutralLanguage>
-    <FileVersion>2.3.4.0</FileVersion>
-    <Version>2.3.4</Version>
+    <FileVersion>2.3.5.0</FileVersion>
+    <Version>2.3.5</Version>
     <PackageReleaseNotes>- Add `ToLongDateTimeInt` method
-- Add `Parse` methods for long numbers</PackageReleaseNotes>
+- Add `Parse` methods for long numbers
+-Fix a bug</PackageReleaseNotes>
     <PackageIconUrl>http://www.codeproject.com/KB/library/850359/PersianDateTimePng.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/Mds92/MD.PersianDateTime</RepositoryUrl>
   </PropertyGroup>
