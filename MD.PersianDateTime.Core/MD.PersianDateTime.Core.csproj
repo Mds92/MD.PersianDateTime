@@ -25,4 +25,8 @@
     <DocumentationFile>bin\Release\netcoreapp2.0\MD.PersianDateTime.Core.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Update="Microsoft.NETCore.App" Version="2.0.6" />
+  </ItemGroup>
+
 </Project>
