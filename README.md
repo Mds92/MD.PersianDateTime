@@ -1,5 +1,6 @@
 # MD.PersianDateTime
 A C# library to use PersianCalendar as easy as DateTime
+تقویم شمسی و هجری قمری در C#
 
 ### Installing:
 ```
@@ -17,7 +18,8 @@ var persianDateTime = new PersianDateTime(DateTime.Now);
 2. Parse
 ```C#
 var persianDateTime1 = PersianDateTime.Parse("دوشنبه 05 مرداد 1395 ساعت 04:03");
-var persianDateTime2 = PersianDateTime.Parse(13901229);
+var persianDateTime2 = PersianDateTime.Parse(13901229); // تاریخ
+var persianDateTime2 = PersianDateTime.Parse(13901229231232102); // تاریخ به همراه زمان تا دقت میلی ثانیه
 var persianDateTime3 = PersianDateTime.Parse("چهارشنبه، ۱۰ دی ۱۳۹۳ ۱۲:۳۸");
 var persianDateTime4 = PersianDateTime.Parse("24 آذر 1393");
 var persianDateTime5 = PersianDateTime.Parse("د 24 آذر 1393 4:2:5:5 ب.ظ");
@@ -37,6 +39,8 @@ var persianDateTime2 = PersianDateTime.Today; // without time
 4. new with persian date
 ```C#
 var persianDateTime = new PersianDateTime(1394, 5, 9);
+var persianDateTime = new PersianDateTime(1394, 5, 9, 10, 5, 3);
+var persianDateTime = new PersianDateTime(1394, 5, 9, 10, 5, 3, 103);
 ```
 ------------------------------------------
 ### Disable persian chars
