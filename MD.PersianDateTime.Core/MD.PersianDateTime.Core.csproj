@@ -19,6 +19,7 @@
 -Fix a bug</PackageReleaseNotes>
     <PackageIconUrl>http://www.codeproject.com/KB/library/850359/PersianDateTimePng.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/Mds92/MD.PersianDateTime</RepositoryUrl>
+    <PackageId>MD.PersianDateTime.Core</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

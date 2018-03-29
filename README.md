@@ -3,8 +3,20 @@ A C# library to use PersianCalendar as easy as DateTime
 تقویم شمسی و هجری قمری در C#
 
 ### Installing:
+
+.Net Framework 2+
 ```
 Install-Package MD.PersianDateTime
+```
+
+.Net Core 2+
+```
+Install-Package MD.PersianDateTime.Core
+```
+
+.Net Standard 2+
+```
+Install-Package MD.PersianDateTime.Standard
 ```
 
 ### Coding:

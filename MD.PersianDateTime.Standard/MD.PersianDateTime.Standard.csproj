@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>PersianDateTime is equivalent of DateTime to use persian date time</Description>
+    <Copyright>Mohammad Dayyan - @mdssoft</Copyright>
+    <PackageLicenseUrl>http://www.codeproject.com/info/cpol10.aspx</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Mds92/MD.PersianDateTime</PackageProjectUrl>
+    <PackageIconUrl>http://www.codeproject.com/KB/library/850359/PersianDateTimePng.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/Mds92/MD.PersianDateTime</RepositoryUrl>
+    <PackageTags>c# .net-standard persiandatetime datetime calendar</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\MD.PersianDateTime.Standard.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
