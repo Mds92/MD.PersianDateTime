@@ -2,6 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>MD.PersianDateTime</PackageId>
+    <Version>4.0.0</Version>
+    <Authors>Mohammad Dayyan</Authors>
+    <Company>Mohammad Dayyan</Company>
+    <Product>MD.PersianDateTime</Product>
+    <Description>You can use PersianDateTime like DateTime and easily parse varient persian datetime string and convert them to PersianDateTime.
+For more information and samples see the project page.</Description>
+    <Copyright>CopyRight 2015-2018 Mohammad Dayyan, @mdssoft, mds_soft@yahoo.com</Copyright>
+    <PackageTags>Persian DateTime Calendar Date</PackageTags>
+    <PackageIconUrl>http://www.codeproject.com/KB/library/850359/PersianDateTimePng.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/Mds92/MD.PersianDateTime</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.codeproject.com/info/cpol10.aspx</PackageLicenseUrl>
   </PropertyGroup>
 
 </Project>
