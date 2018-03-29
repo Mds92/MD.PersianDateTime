@@ -19,7 +19,7 @@ Install-Package MD.PersianDateTime.Core
 Install-Package MD.PersianDateTime.Standard
 ```
 
-In future `MD.PersianDateTime.Core` will be remove. Please use `MD.PersianDateTime.Standard`
+In future `MD.PersianDateTime.Core` will be remove. Please use `MD.PersianDateTime.Standard` instead
 
 ### Coding:
 
