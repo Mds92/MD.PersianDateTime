@@ -8,11 +8,11 @@ namespace MD.PersianDateTime
 {
     /// <summary>
     /// Created By Mohammad Dayyan, @mdssoft, mds_soft@yahoo.com
-    /// 1393/09/14
+    /// 1396/12/06
     /// </summary>
     [Serializable]
-	public struct PersianDateTime :
-		ISerializable, IFormattable, 
+    public struct PersianDateTime :
+	    ISerializable, IFormattable,
         IComparable<PersianDateTime>, IComparable<DateTime>,
 		IEquatable<PersianDateTime>, IEquatable<DateTime>
 	{
@@ -62,12 +62,9 @@ namespace MD.PersianDateTime
 		/// <summary>
 		/// نام فارسی ماه
 		/// </summary>
-		public string MonthName
-		{
-			get { return ((PersianDateTimeMonthEnum)Month).ToString(); }
-		}
+		public string MonthName => ((PersianDateTimeMonthEnum)Month).ToString();
 
-		/// <summary>
+	    /// <summary>
 		/// روز ماه
 		/// </summary>
 		public int Day
@@ -289,15 +286,9 @@ namespace MD.PersianDateTime
 		/// <summary>
 		/// قبل از ظهر، بعد از ظهر
 		/// </summary>
-		private AmPmEnum PersianAmPm
-		{
-			get
-			{
-				return _dateTime.ToString("tt") == "PM" ? AmPmEnum.PM : AmPmEnum.AM;
-			}
-		}
+		private AmPmEnum PersianAmPm => _dateTime.ToString("tt") == "PM" ? AmPmEnum.PM : AmPmEnum.AM;
 
-		/// <summary>
+	    /// <summary>
 		/// قبل از ظهر، بعد از ظهر به شکل مخفف . کوتاه
 		/// </summary>
 		public string GetPersianAmPm
@@ -319,20 +310,17 @@ namespace MD.PersianDateTime
 			}
 		}
 
-	    /// <summary>
-	    /// نام کامل ماه
-	    /// </summary>
-	    public string GetLongMonthName => GetPersianMonthNamePrivate(Month);
-
-        /// <summary>
-        /// سال دو رقمی
-        /// </summary>
-        public int GetShortYear
-		{
-			get { return Year % 100; }
-		}
-
 		/// <summary>
+		/// نام کامل ماه
+		/// </summary>
+		public string GetLongMonthName => GetPersianMonthNamePrivate(Month);
+
+	    /// <summary>
+		/// سال دو رقمی
+		/// </summary>
+		public int GetShortYear => Year % 100;
+
+	    /// <summary>
 		/// نام کامل روز
 		/// </summary>
 		public string GetLongDayOfWeekName
@@ -420,27 +408,15 @@ namespace MD.PersianDateTime
 		/// <summary>
 		/// تاریخ و زمان همین الان
 		/// </summary>
-		public static PersianDateTime Now
-		{
-			get
-			{
-				return new PersianDateTime(DateTime.Now);
-			}
-		}
+		public static PersianDateTime Now => new PersianDateTime(DateTime.Now);
 
-		/// <summary>
+	    /// <summary>
 		/// تاریخ امروز
 		/// </summary>
-		public static PersianDateTime Today
-		{
-			get
-			{
-				return new PersianDateTime(DateTime.Today);
-			}
-		}
+		public static PersianDateTime Today => new PersianDateTime(DateTime.Today);
 
-		/// <summary>
-		/// زمان به فرمتی مشابه 
+	    /// <summary>
+		/// زمان به فرمتی مشابه
 		/// <para />
 		/// 13:47:40:530
 		/// </summary>
@@ -449,14 +425,14 @@ namespace MD.PersianDateTime
 			get
 			{
 				//if (_dateTime <= DateTime.MinValue) return null;
-				var result = string.Format("{0:00}:{1:00}:{2:00}:{3:000}", Hour, Minute, Second, MiliSecond);
+				var result = $"{Hour:00}:{Minute:00}:{Second:00}:{MiliSecond:000}";
 				if (EnglishNumber) return result;
 				return ToPersianNumber(result);
 			}
 		}
 
 		/// <summary>
-		/// زمان به فرمتی مشابه زیر 
+		/// زمان به فرمتی مشابه زیر
 		/// <para />
 		/// ساعت 01:47:40:530 ب.ظ
 		/// </summary>
@@ -465,7 +441,7 @@ namespace MD.PersianDateTime
 			get
 			{
 				//if (_dateTime <= DateTime.MinValue) return null;
-				var result = string.Format("ساعت {0:00}:{1:00}:{2:00}:{3:000} {4}", ShortHour, Minute, Second, MiliSecond, GetPersianAmPm);
+				var result = $"ساعت {ShortHour:00}:{Minute:00}:{Second:00}:{MiliSecond:000} {GetPersianAmPm}";
 				if (EnglishNumber) return result;
 				return ToPersianNumber(result);
 			}
@@ -481,7 +457,7 @@ namespace MD.PersianDateTime
 			get
 			{
 				//if (_dateTime <= DateTime.MinValue) return null;
-				var result = string.Format("{0:00}:{1:00}:{2:00} {3}", ShortHour, Minute, Second, GetPersianAmPm);
+				var result = $"{ShortHour:00}:{Minute:00}:{Second:00} {GetPersianAmPm}";
 				if (EnglishNumber) return result;
 				return ToPersianNumber(result);
 			}
@@ -494,9 +470,9 @@ namespace MD.PersianDateTime
 		{
 			get
 			{
-				var persianDateTime = new PersianDateTime(this.Year, this.Month, this.Day)
+				var persianDateTime = new PersianDateTime(Year, Month, Day)
 				{
-					EnglishNumber = this.EnglishNumber
+					EnglishNumber = EnglishNumber
 				};
 				return persianDateTime;
 			}
@@ -505,35 +481,16 @@ namespace MD.PersianDateTime
 		/// <summary>
 		/// حداقل مقدار
 		/// </summary>
-		public static PersianDateTime MinValue
-		{
-			get { return new PersianDateTime(DateTime.MinValue); }
-		}
+		public static PersianDateTime MinValue => new PersianDateTime(DateTime.MinValue);
 
-		/// <summary>
+	    /// <summary>
 		/// حداکثر مقدار
 		/// </summary>
-		public static PersianDateTime MaxValue
-		{
-			get
-			{
-				return new PersianDateTime(DateTime.MaxValue);
-			}
-		}
+		public static PersianDateTime MaxValue => new PersianDateTime(DateTime.MaxValue);
 
-		#endregion
+	    #endregion
 
 		#region ctor
-
-		/// <summary>
-		/// متد سازنده برای دی سریالایز شدن
-		/// </summary>
-		private PersianDateTime(SerializationInfo info, StreamingContext context)
-			: this()
-		{
-			_dateTime = info.GetDateTime("DateTime");
-			EnglishNumber = info.GetBoolean("EnglishNumber");
-		}
 
 		/// <summary>
 		/// مقدار دهی اولیه با استفاده از دیت تایم میلادی
@@ -642,40 +599,19 @@ namespace MD.PersianDateTime
 
 	    private struct PersianWeekDaysStruct
 		{
-			public static KeyValuePair<int, string> شنبه
-			{
-				get { return new KeyValuePair<int, string>((int)DayOfWeek.Saturday, "شنبه"); }
-			}
+			public static KeyValuePair<int, string> شنبه => new KeyValuePair<int, string>((int)DayOfWeek.Saturday, "شنبه");
 
-			public static KeyValuePair<int, string> یکشنبه
-			{
-				get { return new KeyValuePair<int, string>((int)DayOfWeek.Sunday, "یکشنبه"); }
-			}
+		    public static KeyValuePair<int, string> یکشنبه => new KeyValuePair<int, string>((int)DayOfWeek.Sunday, "یکشنبه");
 
-			public static KeyValuePair<int, string> دوشنبه
-			{
-				get { return new KeyValuePair<int, string>((int)DayOfWeek.Monday, "دوشنبه"); }
-			}
+		    public static KeyValuePair<int, string> دوشنبه => new KeyValuePair<int, string>((int)DayOfWeek.Monday, "دوشنبه");
 
-			public static KeyValuePair<int, string> سه_شنبه
-			{
-				get { return new KeyValuePair<int, string>((int)DayOfWeek.Tuesday, "سه شنبه"); }
-			}
+		    public static KeyValuePair<int, string> سه_شنبه => new KeyValuePair<int, string>((int)DayOfWeek.Tuesday, "سه شنبه");
 
-			public static KeyValuePair<int, string> چهارشنبه
-			{
-				get { return new KeyValuePair<int, string>((int)DayOfWeek.Thursday, "چهارشنبه"); }
-			}
+		    public static KeyValuePair<int, string> چهارشنبه => new KeyValuePair<int, string>((int)DayOfWeek.Thursday, "چهارشنبه");
 
-			public static KeyValuePair<int, string> پنجشنبه
-			{
-				get { return new KeyValuePair<int, string>((int)DayOfWeek.Wednesday, "پنج شنبه"); }
-			}
+		    public static KeyValuePair<int, string> پنجشنبه => new KeyValuePair<int, string>((int)DayOfWeek.Wednesday, "پنج شنبه");
 
-			public static KeyValuePair<int, string> جمعه
-			{
-				get { return new KeyValuePair<int, string>((int)DayOfWeek.Friday, "جمعه"); }
-			}
+		    public static KeyValuePair<int, string> جمعه => new KeyValuePair<int, string>((int)DayOfWeek.Friday, "جمعه");
 		}
 
 		#endregion
@@ -799,23 +735,23 @@ namespace MD.PersianDateTime
 			return dateTime1 - dateTime2;
 		}
 
-		#endregion
+        #endregion
 
-		#endregion
+        #endregion
 
-		#region ISerializable
+	    #region ISerializable
 
-		public void GetObjectData(SerializationInfo info, StreamingContext context)
-		{
-			info.AddValue("DateTime", ToDateTime());
-			info.AddValue("EnglishNumber", EnglishNumber);
-		}
+	    public void GetObjectData(SerializationInfo info, StreamingContext context)
+	    {
+	        info.AddValue("DateTime", ToDateTime());
+	        info.AddValue("EnglishNumber", EnglishNumber);
+	    }
 
-		#endregion
+	    #endregion
 
-		#region IComparable
+        #region IComparable
 
-		public bool Equals(PersianDateTime other)
+        public bool Equals(PersianDateTime other)
 		{
 			return Year == other.Year && Month == other.Month && Day == other.Day &&
 				Hour == other.Hour && Minute == other.Minute && Second == other.Second && MiliSecond == other.MiliSecond;
@@ -831,11 +767,11 @@ namespace MD.PersianDateTime
 		#region Methods
 
 		/// <summary>
-		/// تاریخ شروع ماه رمضان 
+		/// تاریخ شروع ماه رمضان
 		/// <para />
-		/// چون ممکن است در یک سال شمسی دو شروع ماه رمضان داشته باشیم 
+		/// چون ممکن است در یک سال شمسی دو شروع ماه رمضان داشته باشیم
 		/// <para />
-		/// مقدار بازگشتی آرایه است که حداکثر دو آیتم دارد 
+		/// مقدار بازگشتی آرایه است که حداکثر دو آیتم دارد
 		/// </summary>
 		public PersianDateTime[] GetStartDayOfRamadan(int hijriAdjustment)
 		{
@@ -879,12 +815,12 @@ namespace MD.PersianDateTime
 			persianDateTimeInString = string.Format("-{0}-", persianDateTimeInString);
 
 			// بدست آوردن ب.ظ یا ق.ظ
-			if (persianDateTimeInString.IndexOf("ق.ظ",  StringComparison.InvariantCultureIgnoreCase) > -1)
+			if (persianDateTimeInString.IndexOf("ق.ظ",  StringComparison.OrdinalIgnoreCase) > -1)
 				amPmEnum = AmPmEnum.AM;
-			else if (persianDateTimeInString.IndexOf("ب.ظ", StringComparison.InvariantCultureIgnoreCase) > -1)
+			else if (persianDateTimeInString.IndexOf("ب.ظ", StringComparison.OrdinalIgnoreCase) > -1)
 				amPmEnum = AmPmEnum.PM;
 
-			if (persianDateTimeInString.IndexOf(":", StringComparison.InvariantCultureIgnoreCase) > -1) // رشته ورودی شامل ساعت نیز هست
+			if (persianDateTimeInString.IndexOf(":", StringComparison.OrdinalIgnoreCase) > -1) // رشته ورودی شامل ساعت نیز هست
 			{
 				persianDateTimeInString = Regex.Replace(persianDateTimeInString, @"-*:-*", ":");
 				hour = Regex.Match(persianDateTimeInString, @"(?<=-)\d{1,2}(?=:)", RegexOptions.IgnoreCase).Value;
@@ -900,12 +836,10 @@ namespace MD.PersianDateTime
 			if (containMonthSeperator)
 			{
 				// بدست آوردن ماه
-				month = Regex.Match(persianDateTimeInString, @"(?<=\d{2,4}-)\d{1,2}(?=-\d{1,2}-\d{1,2}(?!-\d{1,2}:))", RegexOptions.IgnoreCase).Value;
-                if(string.IsNullOrEmpty(month))
-                    month = Regex.Match(persianDateTimeInString, @"(?<=\d{2,4}-)\d{1,2}(?=-\d{1,2}[^:])", RegexOptions.IgnoreCase).Value;
-                
-                // بدست آوردن روز
-                day = Regex.Match(persianDateTimeInString, @"(?<=\d{2,4}-\d{1,2}-)\d{1,2}(?=-)", RegexOptions.IgnoreCase).Value;
+				month = Regex.Match(persianDateTimeInString, @"(?<=\d{2,4}-)\d{1,2}(?=-\d{1,2}[^:])", RegexOptions.IgnoreCase).Value;
+
+				// بدست آوردن روز
+				day = Regex.Match(persianDateTimeInString, @"(?<=\d{2,4}-\d{1,2}-)\d{1,2}(?=-)", RegexOptions.IgnoreCase).Value;
 
 				// بدست آوردن سال
 				year = Regex.Match(persianDateTimeInString, @"(?<=-)\d{2,4}(?=-\d{1,2}-\d{1,2})", RegexOptions.IgnoreCase).Value;
@@ -1005,10 +939,10 @@ namespace MD.PersianDateTime
 		public static PersianDateTime Parse(int numericPersianDate)
 		{
 			if (numericPersianDate.ToString().Length != 8)
-				throw new InvalidCastException("Numeric persian date must have a format like 13920101.");
+				throw new InvalidCastException("Numeric persian date time must have a format like 13920101.");
 			var year = numericPersianDate / 10000;
 			var day = numericPersianDate % 100;
-			var month = numericPersianDate / 100 % 100;
+			var month = (numericPersianDate / 100) % 100;
 			return new PersianDateTime(year, month, day);
 		}
 		/// <summary>
@@ -1033,12 +967,12 @@ namespace MD.PersianDateTime
 	    /// <summary>
 	    /// پارس کردن عددی در فرمت تاریخ و زمان شمسی
 	    /// <para />
-	    /// همانند 13961223072132004
+	    /// همانند 13961223102232460
 	    /// </summary>
 	    public static PersianDateTime Parse(long numericPersianDateTime)
 	    {
 	        if (numericPersianDateTime.ToString().Length != 17)
-	            throw new InvalidCastException("Numeric persian date time must have a format like 1396122310223246.");
+	            throw new InvalidCastException("Numeric persian date time must have a format like 13961223102232460.");
 	        var year = numericPersianDateTime / 10000000000000;
 	        var month = numericPersianDateTime / 100000000000 % 100;
 	        var day = numericPersianDateTime / 1000000000 % 100;
@@ -1048,12 +982,12 @@ namespace MD.PersianDateTime
 	        var millisecond = numericPersianDateTime % 1000;
 	        return new PersianDateTime((int)year, (int)month, (int)day, (int)hour, (int)minute, (int)second, (int)millisecond);
 	    }
-        /// <summary>
-        /// پارس کردن عددی در فرمت تاریخ و زمان شمسی
-        /// <para />
-        /// همانند 13961223102232461
-        /// </summary>
-        public static bool TryParse(long numericPersianDateTime, out PersianDateTime result)
+	    /// <summary>
+	    /// پارس کردن عددی در فرمت تاریخ و زمان شمسی
+	    /// <para />
+	    /// همانند 1396122310223246
+	    /// </summary>
+	    public static bool TryParse(long numericPersianDateTime, out PersianDateTime result)
 	    {
 	        try
 	        {
@@ -1141,7 +1075,7 @@ namespace MD.PersianDateTime
 			dateTimeString = dateTimeString.Replace("ff", (MiliSecond / 10).ToString("00", CultureInfo.InvariantCulture));
 			dateTimeString = dateTimeString.Replace("f", (MiliSecond / 100).ToString(CultureInfo.InvariantCulture));
 			dateTimeString = dateTimeString.Replace("tt", GetPersianAmPm);
-			dateTimeString = dateTimeString.Replace("t", GetPersianAmPm[0].ToString(CultureInfo.InvariantCulture));
+			dateTimeString = dateTimeString.Replace("t", GetPersianAmPm[0].ToString());
 
 			if (!EnglishNumber)
 				dateTimeString = ToPersianNumber(dateTimeString);
@@ -1221,28 +1155,27 @@ namespace MD.PersianDateTime
 		public string ToShortDate1String()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
-			var result = string.Format("{0} {1:00} {2} {3}", GetShortDayOfWeekName, Day, GetLongMonthName, GetShortYear);
+			var result = $"{GetShortDayOfWeekName} {Day:00} {GetLongMonthName} {GetShortYear}";
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
 
 		/// <summary>
-		/// نمایش تاریخ به صورت عدد و در فرمتی مشابه زیر
+		/// نمایش تاریخ به فرمتی مشابه زیر
 		/// <para />
 		/// 13930914
 		/// </summary>
 		public int ToShortDateInt()
 		{
-			var result = string.Format("{0:0000}{1:00}{2:00}", Year, Month, Day);
-			return int.Parse(result);
+			return int.Parse(string.Format("{0:0000}{1:00}{2:00}", Year, Month, Day));
 		}
 
-        /// <summary>
-        /// نمایش تاریخ و ساعت تا دقت میلی ثانیه به صورت عدد
-        /// <para />
-        /// 1396122310324655
-        /// </summary>
-        public long ToLongDateTimeInt()
+	    /// <summary>
+	    /// نمایش تاریخ و ساعت تا دقت میلی ثانیه به صورت عدد
+	    /// <para />
+	    /// 13961223103246550
+	    /// </summary>
+	    public long ToLongDateTimeInt()
 	    {
 	        var result = string.Format("{0:0000}{1:00}{2:00}{3:00}{4:00}{5:00}{6:000}", Year, Month, Day, Hour, Minute, Second, MiliSecond);
 	        return long.Parse(result);
@@ -1251,20 +1184,19 @@ namespace MD.PersianDateTime
         /// <summary>
         /// در این فرمت نمایش ساعت و دقیقه و ثانیه در کنار هم با حذف علامت : تبدیل به عدد می شوند و نمایش داده می شود
         /// <para />
-        /// مثال: 123452 
+        /// مثال: 123452
         /// <para />
         /// که به معنای ساعت 12 و 34 دقیقه و 52 ثانیه می باشد
         /// </summary>
         public int ToTimeInt()
 	    {
-	        var result = string.Format("{0:00}{1:00}{2:00}", Hour, Minute, Second);
-	        return int.Parse(result);
+	        return int.Parse(string.Format("{0:00}{1:00}{2:00}", Hour, Minute, Second));
 	    }
 
 	    /// <summary>
 	    /// در این فرمت نمایش ساعت و دقیقه در کنار هم با حذف علامت : تبدیل به عدد می شوند و نمایش داده می شود
 	    /// <para />
-	    /// مثال: 1234 
+	    /// مثال: 1234
 	    /// <para />
 	    /// که به معنای ساعت 12 و 34 دقیقه می باشد
 	    /// </summary>
@@ -1282,7 +1214,7 @@ namespace MD.PersianDateTime
         public string ToLongDateString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
-			var result = string.Format("{0}، {1:00} {2} {3:0000}", GetLongDayOfWeekName, Day, GetLongMonthName, Year);
+			var result = $"{GetLongDayOfWeekName}، {Day:00} {GetLongMonthName} {Year:0000}";
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
@@ -1295,7 +1227,8 @@ namespace MD.PersianDateTime
 		public string ToLongDateTimeString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
-			var result = string.Format("{0}، {1:00} {2} {3:0000} ساعت {4:00}:{5:00}:{6:00}", GetLongDayOfWeekName, Day, GetLongMonthName, Year, Hour, Minute, Second);
+			var result =
+			    $"{GetLongDayOfWeekName}، {Day:00} {GetLongMonthName} {Year:0000} ساعت {Hour:00}:{Minute:00}:{Second:00}";
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
@@ -1308,7 +1241,7 @@ namespace MD.PersianDateTime
 		public string ToShortDateTimeString()
 		{
 			//if (_dateTime <= DateTime.MinValue) return null;
-			var result = string.Format("{0}، {1:00} {2} {3:0000} {4:00}:{5:00}", GetLongDayOfWeekName, Day, GetLongMonthName, Year, Hour, Minute);
+			var result = $"{GetLongDayOfWeekName}، {Day:00} {GetLongMonthName} {Year:0000} {Hour:00}:{Minute:00}";
 			if (EnglishNumber) return result;
 			return ToPersianNumber(result);
 		}
@@ -1379,22 +1312,6 @@ namespace MD.PersianDateTime
 		}
 
         /// <summary>
-        /// گرفتن فقط زمان 
-        /// </summary>
-	    public TimeSpan GetTime()
-	    {
-	        return new TimeSpan(0, _dateTime.Hour, _dateTime.Minute, _dateTime.Second, _dateTime.Millisecond);
-        }
-
-        /// <summary>
-        /// تنظیم کردن زمان
-        /// </summary>
-	    public PersianDateTime SetTime(int hour, int minute, int second = 0, int miliSecond = 0)
-	    {
-            return new PersianDateTime(Year, Month, Day, hour, minute, second, miliSecond);
-	    }
-
-        /// <summary>
         /// تبدیل به تاریخ میلادی
         /// </summary>
         public DateTime ToDateTime()
@@ -1415,9 +1332,9 @@ namespace MD.PersianDateTime
 	        var monthName = "";
 	        switch (month)
 	        {
-                case 1:
-                    monthName = "محرم";
-                    break;
+	            case 1:
+	                monthName = "محرم";
+	                break;
 	            case 2:
 	                monthName = "صفر";
 	                break;
@@ -1451,14 +1368,30 @@ namespace MD.PersianDateTime
 	            case 12:
 	                monthName = "ذوالحجه";
 	                break;
-            }
-            return new HijriDateTime
+	        }
+	        return new HijriDateTime
 	        {
-                Day = hijriCalendar.GetDayOfMonth(_dateTime),
+	            Day = hijriCalendar.GetDayOfMonth(_dateTime),
 	            Month = month,
 	            Year = hijriCalendar.GetYear(_dateTime),
-                MonthName = monthName
-            };
+	            MonthName = monthName
+	        };
+	    }
+
+        /// <summary>
+        /// گرفتن فقط زمان
+        /// </summary>
+        public TimeSpan GetTime()
+	    {
+	        return new TimeSpan(0, _dateTime.Hour, _dateTime.Minute, _dateTime.Second, _dateTime.Millisecond);
+	    }
+
+	    /// <summary>
+	    /// تنظیم کردن زمان
+	    /// </summary>
+	    public PersianDateTime SetTime(int hour, int minute, int second = 0, int miliSecond = 0)
+	    {
+	        return new PersianDateTime(Year, Month, Day, hour, minute, second, miliSecond);
 	    }
 
         /// <summary>
@@ -1475,8 +1408,8 @@ namespace MD.PersianDateTime
 	    /// <returns>تعداد ماه</returns>
 	    public int MonthDifference(DateTime dateTime)
 	    {
-            return Math.Abs(dateTime.Month - _dateTime.Month + 12 * (dateTime.Year - _dateTime.Year));
-        }
+	        return Math.Abs(dateTime.Month - _dateTime.Month + 12 * (dateTime.Year - _dateTime.Year));
+	    }
 
         /// <summary>
         /// اضافه کردن مدت زمانی به تاریخ
@@ -1543,13 +1476,13 @@ namespace MD.PersianDateTime
 		}
 
 	    /// <summary>
-	    /// نام فارسی ماه بر اساس شماره ماه
-	    /// </summary>
-	    /// <returns>نام فارسی ماه</returns>
+        /// نام فارسی ماه بر اساس شماره ماه
+        /// </summary>
+        /// <returns>نام فارسی ماه</returns>
 	    public static string GetPersianMonthName(int monthNumber)
-	    {
-	        return GetPersianMonthNamePrivate(monthNumber);
-	    }
+        {
+            return GetPersianMonthNamePrivate(monthNumber);
+        }
 
         private static string ToPersianNumber(string input)
 		{
@@ -1645,8 +1578,8 @@ namespace MD.PersianDateTime
 	                break;
 	        }
 	        return monthName;
-	    }
+        }
 
-        #endregion
-    }
+		#endregion
+	}
 }
