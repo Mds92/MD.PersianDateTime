@@ -9,12 +9,7 @@ A C# library to use PersianCalendar as easy as DateTime
 Install-Package MD.PersianDateTime
 ```
 
-.Net Core 2+ `deprecated`
-```
-Install-Package MD.PersianDateTime.Core
-```
-
-.Net Standard 2+
+.Net Standard 2+ (.Net Core)
 ```
 Install-Package MD.PersianDateTime.Standard
 ```
