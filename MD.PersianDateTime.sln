@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.PersianDateTime", "MD.Pe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MD.PersianDateTime.Standard", "MD.PersianDateTime.Standard\MD.PersianDateTime.Standard.csproj", "{A1061D11-41DF-4AD1-896B-9AEC48DF984A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,18 @@ Global
 		{A1061D11-41DF-4AD1-896B-9AEC48DF984A}.Release|x64.Build.0 = Release|Any CPU
 		{A1061D11-41DF-4AD1-896B-9AEC48DF984A}.Release|x86.ActiveCfg = Release|Any CPU
 		{A1061D11-41DF-4AD1-896B-9AEC48DF984A}.Release|x86.Build.0 = Release|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Debug|x64.Build.0 = Debug|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Debug|x86.Build.0 = Debug|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Release|x64.ActiveCfg = Release|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Release|x64.Build.0 = Release|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Release|x86.ActiveCfg = Release|Any CPU
+		{56C0BA94-1E8C-44EB-B164-F3A82D9C65ED}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
