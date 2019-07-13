@@ -17,7 +17,8 @@ namespace ConsoleApp1
             //Test5();
             //Test6();
             //Test7();
-            Test8();
+            //Test8();
+            Test9();
             Console.ReadKey();
         }
 
@@ -190,6 +191,13 @@ namespace ConsoleApp1
             var persianDateTime = PersianDateTime.Parse(longDateTime);
             persianDateTime.EnglishNumber = true;
             Console.WriteLine(persianDateTime.ToString());
+        }
+
+        private static void Test9()
+        {
+            var persianDateTime1 = PersianDateTime.Now;
+            var persianDateTime2 = PersianDateTime.Now.AddMonths(-4);
+            Console.WriteLine(persianDateTime1.GetDifferenceQuarter(persianDateTime2));
         }
     }
 }
