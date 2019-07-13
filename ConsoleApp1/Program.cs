@@ -196,7 +196,7 @@ namespace ConsoleApp1
         private static void Test9()
         {
             var persianDateTime1 = PersianDateTime.Now;
-            var persianDateTime2 = PersianDateTime.Now.AddMonths(-4);
+            var persianDateTime2 = PersianDateTime.Now.AddMonths(-1);
             Console.WriteLine(persianDateTime1.GetDifferenceQuarter(persianDateTime2));
         }
     }

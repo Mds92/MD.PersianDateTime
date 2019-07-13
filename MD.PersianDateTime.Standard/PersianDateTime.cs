@@ -1651,9 +1651,15 @@ namespace MD.PersianDateTime.Standard
         public int GetDifferenceQuarter(DateTime targetDateTime)
         {
             var biggerDateTime = targetDateTime;
-            if (_dateTime > targetDateTime) biggerDateTime = _dateTime;
-            var diffMonth = (biggerDateTime.Year - _dateTime.Year) * 12 + biggerDateTime.Month - _dateTime.Month;
-            var firstQuarter = GetSeasonMonths(_dateTime.Month);
+            var lesserDateTime = _dateTime;
+            if (_dateTime > targetDateTime)
+            {
+                var tmp = biggerDateTime;
+                biggerDateTime = _dateTime;
+                lesserDateTime = tmp;
+            }
+            var diffMonth = (biggerDateTime.Year - lesserDateTime.Year) * 12 + biggerDateTime.Month - lesserDateTime.Month;
+            var firstQuarter = GetSeasonMonths(lesserDateTime.Month);
             var seasons = GetSeasons(firstQuarter);
             if (diffMonth < 12) return seasons.First(p => p.Value.Contains(biggerDateTime.Month)).Key;
             var diffYear = diffMonth / 12;
