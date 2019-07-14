@@ -109,6 +109,7 @@ IsChristianDate \\ Check if the input string is a christian datetime
 ElapsedTime \\ Get past time until now e.g: ۱ روز قبل
 Add*** \\ add day, month, year, ... to persian datetime
 Subtract*** \\ Subtract a datetime from current object
+GetDifferenceQuarter \\ Date Difference base on seasons
 ```
 ------------------------------------------
 ### Comparing
