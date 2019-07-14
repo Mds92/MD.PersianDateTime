@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
+// ReSharper disable UnusedMember.Local
 
 namespace MD.PersianDateTime.Standard
 {
@@ -616,6 +617,7 @@ namespace MD.PersianDateTime.Standard
 
             public static KeyValuePair<int, string> دوشنبه => new KeyValuePair<int, string>((int)DayOfWeek.Monday, "دوشنبه");
 
+            // ReSharper disable once InconsistentNaming
             public static KeyValuePair<int, string> سه_شنبه => new KeyValuePair<int, string>((int)DayOfWeek.Tuesday, "سه شنبه");
 
             public static KeyValuePair<int, string> چهارشنبه => new KeyValuePair<int, string>((int)DayOfWeek.Thursday, "چهارشنبه");
