@@ -641,6 +641,7 @@ namespace MD.PersianDateTime.Standard
             return ToString("");
         }
 
+        /// <inheritdoc />
         public override bool Equals(object obj)
         {
             if (!(obj is PersianDateTime)) return false;
@@ -648,6 +649,7 @@ namespace MD.PersianDateTime.Standard
             return _dateTime == persianDateTime.ToDateTime();
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             return _dateTime.GetHashCode();
@@ -754,6 +756,7 @@ namespace MD.PersianDateTime.Standard
 
         #region ISerializable
 
+        /// <inheritdoc />
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("DateTime", ToDateTime());
@@ -764,12 +767,14 @@ namespace MD.PersianDateTime.Standard
 
         #region IComparable
 
+        /// <inheritdoc />
         public bool Equals(PersianDateTime other)
         {
             return Year == other.Year && Month == other.Month && Day == other.Day &&
                 Hour == other.Hour && Minute == other.Minute && Second == other.Second && Millisecond == other.Millisecond;
         }
 
+        /// <inheritdoc />
         public bool Equals(DateTime other)
         {
             return _dateTime == other;
