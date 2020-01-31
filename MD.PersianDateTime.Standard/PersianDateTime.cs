@@ -35,7 +35,7 @@ namespace MD.PersianDateTime.Standard
         /// <summary>
         /// آیا اعداد در خروجی به صورت انگلیسی نمایش داده شوند؟
         /// </summary>
-        public bool EnglishNumber { get; set; }
+        public bool PersianNumber { get; set; }
 
         /// <summary>
         /// سال شمسی
@@ -428,7 +428,7 @@ namespace MD.PersianDateTime.Standard
             {
                 //if (_dateTime <= DateTime.MinValue) return null;
                 var result = $"{Hour:00}:{Minute:00}:{Second:00}:{Millisecond:000}";
-                if (EnglishNumber) return result;
+                if (!PersianNumber) return result;
                 return ToPersianNumber(result);
             }
         }
@@ -444,7 +444,7 @@ namespace MD.PersianDateTime.Standard
             {
                 //if (_dateTime <= DateTime.MinValue) return null;
                 var result = $"ساعت {ShortHour:00}:{Minute:00}:{Second:00}:{Millisecond:000} {GetPersianAmPm}";
-                if (EnglishNumber) return result;
+                if (!PersianNumber) return result;
                 return ToPersianNumber(result);
             }
         }
@@ -460,7 +460,7 @@ namespace MD.PersianDateTime.Standard
             {
                 //if (_dateTime <= DateTime.MinValue) return null;
                 var result = $"{ShortHour:00}:{Minute:00}:{Second:00} {GetPersianAmPm}";
-                if (EnglishNumber) return result;
+                if (!PersianNumber) return result;
                 return ToPersianNumber(result);
             }
         }
@@ -474,7 +474,7 @@ namespace MD.PersianDateTime.Standard
             {
                 var persianDateTime = new PersianDateTime(Year, Month, Day)
                 {
-                    EnglishNumber = EnglishNumber
+                    PersianNumber = PersianNumber
                 };
                 return persianDateTime;
             }
@@ -501,19 +501,19 @@ namespace MD.PersianDateTime.Standard
             : this()
         {
             _dateTime = info.GetDateTime("DateTime");
-            EnglishNumber = info.GetBoolean("EnglishNumber");
+            PersianNumber = info.GetBoolean("PersianNumber");
         }
 
         /// <summary>
         /// مقدار دهی اولیه با استفاده از دیت تایم میلادی
         /// </summary>
         /// <param name="dateTime">DateTime</param>
-        /// <param name="englishNumber">آیا اعداد در خروجی های این آبجکت به صورت انگلیسی نمایش داده شوند یا فارسی؟</param>
-        private PersianDateTime(DateTime dateTime, bool englishNumber)
+        /// <param name="persianNumber">آیا اعداد در خروجی های این آبجکت به صورت فارسی نمایش داده شوند یا فارسی؟</param>
+        private PersianDateTime(DateTime dateTime, bool persianNumber)
             : this()
         {
             _dateTime = dateTime;
-            EnglishNumber = englishNumber;
+            PersianNumber = persianNumber;
         }
 
         /// <summary>
@@ -760,7 +760,7 @@ namespace MD.PersianDateTime.Standard
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("DateTime", ToDateTime());
-            info.AddValue("EnglishNumber", EnglishNumber);
+            info.AddValue("PersianNumber", PersianNumber);
         }
 
         #endregion
@@ -1097,7 +1097,7 @@ namespace MD.PersianDateTime.Standard
             dateTimeString = dateTimeString.Replace("tt", GetPersianAmPm);
             dateTimeString = dateTimeString.Replace("t", GetPersianAmPm[0].ToString(CultureInfo.InvariantCulture));
 
-            if (!EnglishNumber)
+            if (PersianNumber)
                 dateTimeString = ToPersianNumber(dateTimeString);
 
             return dateTimeString;
@@ -1163,7 +1163,7 @@ namespace MD.PersianDateTime.Standard
         {
             //if (_dateTime <= DateTime.MinValue) return null;
             var result = $"{Year:0000}/{Month:00}/{Day:00}";
-            if (EnglishNumber) return result;
+            if (!PersianNumber) return result;
             return ToPersianNumber(result);
         }
 
@@ -1176,7 +1176,7 @@ namespace MD.PersianDateTime.Standard
         {
             //if (_dateTime <= DateTime.MinValue) return null;
             var result = $"{GetShortDayOfWeekName} {Day:00} {GetLongMonthName} {GetShortYear}";
-            if (EnglishNumber) return result;
+            if (!PersianNumber) return result;
             return ToPersianNumber(result);
         }
 
@@ -1236,7 +1236,7 @@ namespace MD.PersianDateTime.Standard
         public string ToLongDateString()
         {
             var result = $"{GetLongDayOfWeekName}، {Day:00} {GetLongMonthName} {Year:0000}";
-            if (EnglishNumber) return result;
+            if (!PersianNumber) return result;
             return ToPersianNumber(result);
         }
 
@@ -1249,7 +1249,7 @@ namespace MD.PersianDateTime.Standard
         {
             var result =
                 $"{GetLongDayOfWeekName}، {Day:00} {GetLongMonthName} {Year:0000} ساعت {Hour:00}:{Minute:00}:{Second:00}";
-            if (EnglishNumber) return result;
+            if (!PersianNumber) return result;
             return ToPersianNumber(result);
         }
 
@@ -1261,7 +1261,7 @@ namespace MD.PersianDateTime.Standard
         public string ToShortDateTimeString()
         {
             var result = $"{GetLongDayOfWeekName}، {Day:00} {GetLongMonthName} {Year:0000} {Hour:00}:{Minute:00}";
-            if (EnglishNumber) return result;
+            if (!PersianNumber) return result;
             return ToPersianNumber(result);
         }
 
@@ -1273,7 +1273,7 @@ namespace MD.PersianDateTime.Standard
         public string ToShortTimeString()
         {
             var result = $"{ShortHour:00}:{Minute:00} {GetPersianAmPm}";
-            if (EnglishNumber) return result;
+            if (!PersianNumber) return result;
             return ToPersianNumber(result);
         }
 
@@ -1285,7 +1285,7 @@ namespace MD.PersianDateTime.Standard
         public string ToLongTimeString()
         {
             var result = $"{Hour:00}:{Minute:00}:{Second:00}";
-            if (EnglishNumber) return result;
+            if (!PersianNumber) return result;
             return ToPersianNumber(result);
         }
 
@@ -1322,7 +1322,7 @@ namespace MD.PersianDateTime.Standard
                 if (minute <= 1) minute = 1;
                 result = $"{minute:0} دقیقه قبل";
             }
-            if (EnglishNumber) return result;
+            if (!PersianNumber) return result;
             return ToPersianNumber(result);
         }
 
@@ -1431,7 +1431,7 @@ namespace MD.PersianDateTime.Standard
         /// </summary>
         public PersianDateTime Add(TimeSpan timeSpan)
         {
-            return new PersianDateTime(_dateTime.Add(timeSpan), EnglishNumber);
+            return new PersianDateTime(_dateTime.Add(timeSpan), PersianNumber);
         }
 
         /// <summary>
@@ -1439,7 +1439,7 @@ namespace MD.PersianDateTime.Standard
         /// </summary>
         public PersianDateTime AddYears(int years)
         {
-            return new PersianDateTime(PersianCalendar.AddYears(_dateTime, years), EnglishNumber);
+            return new PersianDateTime(PersianCalendar.AddYears(_dateTime, years), PersianNumber);
         }
 
         /// <summary>
@@ -1447,7 +1447,7 @@ namespace MD.PersianDateTime.Standard
         /// </summary>
         public PersianDateTime AddDays(int days)
         {
-            return new PersianDateTime(PersianCalendar.AddDays(_dateTime, days), EnglishNumber);
+            return new PersianDateTime(PersianCalendar.AddDays(_dateTime, days), PersianNumber);
         }
 
         /// <summary>
@@ -1455,7 +1455,7 @@ namespace MD.PersianDateTime.Standard
         /// </summary>
         public PersianDateTime AddMonths(int months)
         {
-            return new PersianDateTime(PersianCalendar.AddMonths(_dateTime, months), EnglishNumber);
+            return new PersianDateTime(PersianCalendar.AddMonths(_dateTime, months), PersianNumber);
         }
 
         /// <summary>
@@ -1463,7 +1463,7 @@ namespace MD.PersianDateTime.Standard
         /// </summary>
         public PersianDateTime AddHours(int hours)
         {
-            return new PersianDateTime(_dateTime.AddHours(hours), EnglishNumber);
+            return new PersianDateTime(_dateTime.AddHours(hours), PersianNumber);
         }
 
         /// <summary>
@@ -1471,7 +1471,7 @@ namespace MD.PersianDateTime.Standard
         /// </summary>
         public PersianDateTime AddMinutes(int minutes)
         {
-            return new PersianDateTime(_dateTime.AddMinutes(minutes), EnglishNumber);
+            return new PersianDateTime(_dateTime.AddMinutes(minutes), PersianNumber);
         }
 
         /// <summary>
@@ -1479,7 +1479,7 @@ namespace MD.PersianDateTime.Standard
         /// </summary>
         public PersianDateTime AddSeconds(int seconds)
         {
-            return new PersianDateTime(_dateTime.AddSeconds(seconds), EnglishNumber);
+            return new PersianDateTime(_dateTime.AddSeconds(seconds), PersianNumber);
         }
 
         /// <summary>
@@ -1487,7 +1487,7 @@ namespace MD.PersianDateTime.Standard
         /// </summary>
         public PersianDateTime AddMilliseconds(int milliseconds)
         {
-            return new PersianDateTime(_dateTime.AddMilliseconds(milliseconds), EnglishNumber);
+            return new PersianDateTime(_dateTime.AddMilliseconds(milliseconds), PersianNumber);
         }
 
         /// <summary>
