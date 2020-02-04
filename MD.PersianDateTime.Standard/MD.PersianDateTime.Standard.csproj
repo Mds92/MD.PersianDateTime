@@ -2,19 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>Add GetDifferenceQuarter Method</Description>
+    <Description>A C# library to use PersianCalendar as easy as DateTime</Description>
     <Copyright>Mohammad Dayyan - @mdssoft</Copyright>
-    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageLicense>https://licenses.nuget.org/MIT</PackageLicense>
     <PackageProjectUrl>https://github.com/Mds92/MD.PersianDateTime</PackageProjectUrl>
-    <PackageIconUrl>http://www.codeproject.com/KB/library/850359/PersianDateTimePng.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/Mds92/MD.PersianDateTime</RepositoryUrl>
     <PackageTags>c# .net-standard persiandatetime datetime calendar</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
-    <Version>2.0.0</Version>
+    <AssemblyVersion>2.0.1.0</AssemblyVersion>
+    <FileVersion>2.0.1.0</FileVersion>
+    <Version>2.0.1</Version>
     <LangVersion>latest</LangVersion>
     <LangVersion>8</LangVersion>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageIcon>PersianDateTimePng.png</PackageIcon>
+    <PackageIconUrl />
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <Company>Mohammad Dayyan</Company>
+    <Authors>Mohammad Dayyan</Authors>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -25,6 +30,13 @@
     <Compile Update="PersianDateTime.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Icon/PersianDateTimePng.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
