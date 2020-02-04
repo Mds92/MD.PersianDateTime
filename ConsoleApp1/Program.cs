@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         private static void Main()
         {
-            //Test1();
+            Test1();
             //Test2();
             //Test3();
             //Test4();
@@ -18,7 +18,7 @@ namespace ConsoleApp1
             //Test6();
             //Test7();
             //Test8();
-            Test9();
+            // Test9();
             Console.ReadKey();
         }
 

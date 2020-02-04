@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace MD.PersianDateTime.Standard
+namespace MD.PersianDateTime.Standard.Helpers
 {
     internal static class ExtensionsHelper
     {
