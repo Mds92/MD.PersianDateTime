@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using MD.PersianDateTime.Standard;
 using Newtonsoft.Json;
@@ -10,7 +11,7 @@ namespace ConsoleApp1
     {
         private static void Main()
         {
-            Test1();
+            // Test1();
             //Test2();
             //Test3();
             //Test4();
@@ -19,6 +20,7 @@ namespace ConsoleApp1
             //Test7();
             //Test8();
             // Test9();
+            Test10();
             Console.ReadKey();
         }
 
@@ -184,6 +186,14 @@ namespace ConsoleApp1
             var persianDateTime1 = PersianDateTime.Now;
             var persianDateTime2 = PersianDateTime.Now.AddYears(-1);
             Console.WriteLine(persianDateTime1.GetDifferenceQuarter(persianDateTime2));
+        }
+
+        private static void Test10()
+        {
+            var persianDateTimeNow = PersianDateTime.Now;
+            var persianDateTimeNowString = persianDateTimeNow.ToString(CultureInfo.InvariantCulture);
+            var persianDateTimeConverted = (PersianDateTime)Convert.ChangeType(persianDateTimeNowString, typeof(DateTime));
+            Console.WriteLine(persianDateTimeConverted.ToEpochTime());
         }
     }
 }

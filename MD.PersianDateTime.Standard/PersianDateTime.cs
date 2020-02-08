@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using MD.PersianDateTime.Standard.Helpers;
@@ -16,7 +17,7 @@ namespace MD.PersianDateTime.Standard
     /// </summary>
     [Serializable]
     public struct PersianDateTime :
-        ISerializable, IFormattable,
+        ISerializable, IFormattable, IConvertible,
         IComparable<PersianDateTime>, IComparable<DateTime>,
         IEquatable<PersianDateTime>, IEquatable<DateTime>
     {
@@ -1028,6 +1029,23 @@ namespace MD.PersianDateTime.Standard
         private static readonly List<string> PmAm = new List<string> { "pm", "am" };
 
         /// <summary>
+        /// تبدیل به ساعت گرینویچ
+        /// </summary>
+        public PersianDateTime ToUniversalTime()
+        {
+            return new PersianDateTime(_dateTime.ToUniversalTime());
+        }
+
+        /// <summary>
+        /// دریافت تعداد ثانیه های سپری شده از اولین روز سال 1397
+        /// </summary>
+        public int ToEpochTime()
+        {
+            var timeSpan = _dateTime - new DateTime(1970, 1, 1);
+            return (int)timeSpan.TotalSeconds;
+        }
+
+        /// <summary>
         /// فرمت های که پشتیبانی می شوند
         /// <para />
         /// yyyy: سال چهار رقمی
@@ -1674,6 +1692,157 @@ namespace MD.PersianDateTime.Standard
             var diffYear = diffMonth / 12;
             var diffQuarter = diffMonth - diffYear * 12;
             return diffYear * 4 + diffQuarter / 3 + 1;
+        }
+
+        #endregion
+
+        #region IConvertible
+
+        /// <inheritdoc />
+        public TypeCode GetTypeCode()
+        {
+            return TypeCode.DateTime;
+        }
+
+        /// <inheritdoc />
+        public bool ToBoolean(IFormatProvider provider)
+        {
+            return _dateTime > DateTime.MinValue;
+        }
+
+        /// <inheritdoc />
+        public byte ToByte(IFormatProvider provider)
+        {
+            throw new InvalidCastException();
+        }
+
+        /// <inheritdoc />
+        public char ToChar(IFormatProvider provider)
+        {
+            throw new InvalidCastException();
+        }
+
+        /// <inheritdoc />
+        public DateTime ToDateTime(IFormatProvider provider)
+        {
+            return _dateTime;
+        }
+
+        /// <inheritdoc />
+        public decimal ToDecimal(IFormatProvider provider)
+        {
+            return ToLongDateTimeInt();
+        }
+
+        /// <inheritdoc />
+        public double ToDouble(IFormatProvider provider)
+        {
+            return ToLongDateTimeInt();
+        }
+
+        /// <inheritdoc />
+        public short ToInt16(IFormatProvider provider)
+        {
+            throw new InvalidCastException();
+        }
+
+        /// <inheritdoc />
+        public int ToInt32(IFormatProvider provider)
+        {
+            return ToShortDateInt();
+        }
+
+        /// <inheritdoc />
+        public long ToInt64(IFormatProvider provider)
+        {
+            return ToLongDateTimeInt();
+        }
+
+        /// <inheritdoc />
+        public sbyte ToSByte(IFormatProvider provider)
+        {
+            throw new InvalidCastException();
+        }
+
+        /// <inheritdoc />
+        public float ToSingle(IFormatProvider provider)
+        {
+            throw new InvalidCastException();
+        }
+
+        /// <inheritdoc />
+        public string ToString(IFormatProvider provider)
+        {
+            return ToString("", provider);
+        }
+
+        /// <inheritdoc />
+        public object ToType(Type conversionType, IFormatProvider provider)
+        {
+            switch (Type.GetTypeCode(conversionType))
+            {
+                case TypeCode.Boolean:
+                    return ToBoolean(provider);
+                case TypeCode.Byte:
+                    return ToByte(provider);
+                case TypeCode.Char:
+                    return ToChar(provider);
+                case TypeCode.DateTime:
+                    return ToDateTime(provider);
+                case TypeCode.Decimal:
+                    return ToDecimal(provider);
+                case TypeCode.Double:
+                    return ToDouble(provider);
+                case TypeCode.Int16:
+                    return ToInt16(provider);
+                case TypeCode.Int32:
+                    return ToInt32(provider);
+                case TypeCode.Int64:
+                    return ToInt64(provider);
+                case TypeCode.Object:
+                    if (typeof(PersianDateTime) == conversionType)
+                        return this;
+                    if (typeof(DateTime) == conversionType)
+                        return ToDateTime();
+                    throw new InvalidCastException($"Conversion to a {conversionType.Name} is not supported.");
+                case TypeCode.SByte:
+                    return ToSByte(provider);
+                case TypeCode.Single:
+                    return ToSingle(provider);
+                case TypeCode.String:
+                    return ToString(provider);
+                case TypeCode.UInt16:
+                    return ToUInt16(provider);
+                case TypeCode.UInt32:
+                    return ToUInt32(provider);
+                case TypeCode.UInt64:
+                    return ToUInt64(provider);
+                case TypeCode.DBNull:
+                    break;
+                case TypeCode.Empty:
+                    break;
+                default:
+                    throw new InvalidCastException($"Conversion to {conversionType.Name} is not supported.");
+            }
+            throw new InvalidCastException();
+        }
+
+        /// <inheritdoc />
+        public ushort ToUInt16(IFormatProvider provider)
+        {
+            throw new InvalidCastException();
+        }
+
+        /// <inheritdoc />
+        public uint ToUInt32(IFormatProvider provider)
+        {
+            return (uint)ToShortDateInt();
+        }
+
+        /// <inheritdoc />
+        public ulong ToUInt64(IFormatProvider provider)
+        {
+            return (ulong)ToLongDateTimeInt();
         }
 
         #endregion
