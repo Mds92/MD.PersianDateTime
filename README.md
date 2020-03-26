@@ -51,10 +51,10 @@ var persianDateTime = new PersianDateTime(1394, 5, 9, 10, 5, 3);
 var persianDateTime = new PersianDateTime(1394, 5, 9, 10, 5, 3, 103);
 ```
 ------------------------------------------
-### Disable persian chars
+### Enable persian numbers
 ```C#
 var persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 58");
-persianDateTime.EnglishNumber = true;
+persianDateTime.PersianNumber = true;
 ```
 ------------------------------------------
 ### Convert to DateTime
