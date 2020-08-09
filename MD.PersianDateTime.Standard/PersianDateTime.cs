@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -589,6 +590,7 @@ namespace MD.PersianDateTime.Standard
 
         #region Types
 
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         private enum AmPmEnum
         {
             AM = 0,
@@ -596,55 +598,34 @@ namespace MD.PersianDateTime.Standard
             None = 2
         }
 
+        [SuppressMessage("ReSharper", "IdentifierTypo")]
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         private enum PersianDateTimeMonthEnum
         {
-            // ReSharper disable once IdentifierTypo
             فروردین = 1,
-            // ReSharper disable once IdentifierTypo
             اردیبهشت = 2,
-            // ReSharper disable once IdentifierTypo
             خرداد = 3,
-            // ReSharper disable once IdentifierTypo
             تیر = 4,
-            // ReSharper disable once IdentifierTypo
             مرداد = 5,
-            // ReSharper disable once IdentifierTypo
             شهریور = 6,
-            // ReSharper disable once IdentifierTypo
             مهر = 7,
-            // ReSharper disable once IdentifierTypo
             آبان = 8,
-            // ReSharper disable once IdentifierTypo
             آذر = 9,
-            // ReSharper disable once IdentifierTypo
             دی = 10,
-            // ReSharper disable once IdentifierTypo
             بهمن = 11,
-            // ReSharper disable once IdentifierTypo
             اسفند = 12
         }
 
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
+        [SuppressMessage("ReSharper", "IdentifierTypo")]
         private struct PersianWeekDaysStruct
         {
-            // ReSharper disable once IdentifierTypo
             public static KeyValuePair<int, string> شنبه => new KeyValuePair<int, string>((int)DayOfWeek.Saturday, "شنبه");
-
-            // ReSharper disable once IdentifierTypo
             public static KeyValuePair<int, string> یکشنبه => new KeyValuePair<int, string>((int)DayOfWeek.Sunday, "یکشنبه");
-
-            // ReSharper disable once IdentifierTypo
             public static KeyValuePair<int, string> دوشنبه => new KeyValuePair<int, string>((int)DayOfWeek.Monday, "دوشنبه");
-
-            // ReSharper disable once IdentifierTypo
             public static KeyValuePair<int, string> سه_شنبه => new KeyValuePair<int, string>((int)DayOfWeek.Tuesday, "سه شنبه");
-
-            // ReSharper disable once IdentifierTypo
             public static KeyValuePair<int, string> چهارشنبه => new KeyValuePair<int, string>((int)DayOfWeek.Thursday, "چهارشنبه");
-
-            // ReSharper disable once IdentifierTypo
             public static KeyValuePair<int, string> پنجشنبه => new KeyValuePair<int, string>((int)DayOfWeek.Wednesday, "پنج شنبه");
-
-            // ReSharper disable once IdentifierTypo
             public static KeyValuePair<int, string> جمعه => new KeyValuePair<int, string>((int)DayOfWeek.Friday, "جمعه");
         }
 
