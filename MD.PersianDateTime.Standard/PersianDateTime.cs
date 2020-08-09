@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using MD.PersianDateTime.Standard.Helpers;
@@ -103,6 +102,7 @@ namespace MD.PersianDateTime.Standard
             get
             {
                 var dayOfWeek = PersianCalendar.GetDayOfWeek(_dateTime);
+                // ReSharper disable once InconsistentNaming
                 PersianDayOfWeek persianDayOfWeek;
                 switch (dayOfWeek)
                 {
@@ -809,6 +809,14 @@ namespace MD.PersianDateTime.Standard
                 result.Add(startDayOfRamadan2);
 
             return result.ToArray();
+        }
+
+        /// <summary>
+        /// تاریخ آخرین روز ماه شمسی
+        /// </summary>
+        public PersianDateTime GetPersianDateOfLastDayOfMonth()
+        {
+            return new PersianDateTime(Year, Month, GetMonthDays);
         }
 
         /// <summary>
