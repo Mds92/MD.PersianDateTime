@@ -9,9 +9,9 @@
     <RepositoryUrl>https://github.com/Mds92/MD.PersianDateTime</RepositoryUrl>
     <PackageTags>c# .net-standard persiandatetime datetime calendar</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.1.1.0</AssemblyVersion>
-    <FileVersion>2.1.1.0</FileVersion>
-    <Version>2.1.1</Version>
+    <AssemblyVersion>2.2.0.0</AssemblyVersion>
+    <FileVersion>2.2.0.0</FileVersion>
+    <Version>2.2.0</Version>
     <LangVersion>latest</LangVersion>
     <LangVersion>8</LangVersion>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -20,7 +20,7 @@
     <PackageLicenseExpression></PackageLicenseExpression>
     <Company>Mohammad Dayyan</Company>
     <Authors>Mohammad Dayyan</Authors>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>Add GetPersianDateOfLastDayOfMonth</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
