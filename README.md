@@ -18,12 +18,19 @@ Install-Package MD.PersianDateTime.Standard
 ### Coding:
 
 Creating new object:
-1. new
+1. New with DateTime object
 ```C#
 var persianDateTime = new PersianDateTime(DateTime.Now);
 ```
 
-2. Parse
+2. New with persian date
+```C#
+var persianDateTime = new PersianDateTime(1394, 5, 9);
+var persianDateTime = new PersianDateTime(1394, 5, 9, 10, 5, 3);
+var persianDateTime = new PersianDateTime(1394, 5, 9, 10, 5, 3, 103);
+```
+
+3. Parse
 ```C#
 var persianDateTime1 = PersianDateTime.Parse("دوشنبه 05 مرداد 1395 ساعت 04:03");
 var persianDateTime2 = PersianDateTime.Parse(13901229); // تاریخ
@@ -38,23 +45,20 @@ var persianDateTime9 = PersianDateTime.Parse("93-1-1 3:15 ب.ظ");
 var persianDateTime10 = PersianDateTime.Parse("جمعه 93/2/1 ساعت 3:2 ب.ظ");
 ```
 
-3. Today, Now
+4. Today, Now
 ```C#
 var persianDateTime1 = PersianDateTime.Now;
 var persianDateTime2 = PersianDateTime.Today; // without time
 ```
 
-4. new with persian date
-```C#
-var persianDateTime = new PersianDateTime(1394, 5, 9);
-var persianDateTime = new PersianDateTime(1394, 5, 9, 10, 5, 3);
-var persianDateTime = new PersianDateTime(1394, 5, 9, 10, 5, 3, 103);
-```
 ------------------------------------------
 ### Enable persian numbers
 ```C#
 var persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 58");
 persianDateTime.PersianNumber = true;
+Console.Write(PersianDateTime.Now.ToString("yyyy/MM/dd"));
+// ۱۳۹۹/۱۰/۰۳
+// 
 ```
 ------------------------------------------
 ### Convert to DateTime
@@ -70,7 +74,6 @@ DateTime datetime = persianDateTime.ToDateTime();
 ### Get HijriDate
 ```C#
 var persianDateTimeNow = PersianDateTime.Now;
-persianDateTimeNow.EnglishNumber = true;
 var hijriDateTime = persianDateTimeNow.ToHijri(-1);
 Console.WriteLine($"{hijriDateTime.Year}-{hijriDateTime.Month}-{hijriDateTime.Day}");
 ```
