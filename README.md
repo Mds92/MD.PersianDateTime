@@ -58,7 +58,6 @@ var persianDateTime = PersianDateTime.Parse("چهارشنبه 5 آذر 58");
 persianDateTime.PersianNumber = true;
 Console.Write(PersianDateTime.Now.ToString("yyyy/MM/dd"));
 // ۱۳۹۹/۱۰/۰۳
-// 
 ```
 ------------------------------------------
 ### Convert to DateTime
@@ -136,5 +135,10 @@ var persianDateTime1 = new PersianDateTime(1396, 03, 28);
 
 persianDateTime1 = persianDateTime1 + new TimeSpan(0, 0, 12); // add 12 minutes
 persianDateTime1 = persianDateTime1 - new TimeSpan(0, 0, 1); // subtract 1 minutes
+persianDateTime1 = persianDateTime1.AddDays(1); // add one day
+persianDateTime1 = persianDateTime1.AddMonth(-1); // subtract 1 month
+.
+.
+.
 
 ```
