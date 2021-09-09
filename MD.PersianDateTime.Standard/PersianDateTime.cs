@@ -819,6 +819,14 @@ namespace MD.PersianDateTime.Standard
         }
 
         /// <summary>
+        /// تاریخ آخرین روز سال شمسی
+        /// </summary>
+        public PersianDateTime GetPersianDateOfLastDayOfYear()
+        {
+            return new PersianDateTime(Year, 12, IsLeapYear ? 30 : 29);
+        }
+
+        /// <summary>
         /// پارس کردن رشته و تبدیل به نوع PersianDateTime
         /// </summary>
         /// <param name="persianDateTimeInString">متنی که باید پارس شود</param>

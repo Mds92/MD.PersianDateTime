@@ -24,5 +24,13 @@ namespace MD.PersianDateTime.Standard.Test
             var date = new PersianDateTime(1399, 12, 1);
             Assert.Equal(new PersianDateTime(date.Year, date.Month, date.GetMonthDays), date.GetPersianDateOfLastDayOfMonth());
         }
+
+        [Fact]
+        public void GetPersianDateOfLastDayOfYear1()
+        {
+            var date1 = new PersianDateTime(1400, 1, 1);
+            var date2 = new PersianDateTime(1400, 12, 29);
+            Assert.Equal(date1.GetPersianDateOfLastDayOfYear(), date2);
+        }
     }
 }
