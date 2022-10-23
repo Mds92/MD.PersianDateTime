@@ -1513,6 +1513,24 @@ namespace MD.PersianDateTime
         }
 
         /// <summary>
+        /// بدست آوردن تاریخ شمسی اولین روز هفته
+        /// </summary>
+        public PersianDateTime GetFirstDayOfWeek()
+        {
+            var persianDateTime = new PersianDateTime(_dateTime).Date;
+            return persianDateTime.AddDays(PersianDayOfWeek.Saturday - persianDateTime.PersianDayOfWeek);
+        }
+
+        /// <summary>
+        /// بدست آوردن تاریخ شمسی آخرین روز هفته
+        /// </summary>
+        public PersianDateTime GetPersianWeekend()
+        {
+            var persianDateTime = new PersianDateTime(_dateTime).Date;
+            return persianDateTime.AddDays(PersianDayOfWeek.Friday - persianDateTime.PersianDayOfWeek);
+        }
+
+        /// <summary>
         /// نام فارسی ماه بر اساس شماره ماه
         /// </summary>
         /// <returns>نام فارسی ماه</returns>
