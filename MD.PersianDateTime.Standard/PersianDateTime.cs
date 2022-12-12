@@ -266,7 +266,7 @@ namespace MD.PersianDateTime.Standard
         }
 
         /// <summary>
-        /// روز چندم ماه
+        /// روز چندم سال
         /// </summary>
         public int GetDayOfYear
         {
