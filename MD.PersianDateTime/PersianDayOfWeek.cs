@@ -1,40 +1,39 @@
-﻿namespace MD.PersianDateTime
+﻿namespace MD.PersianDateTime;
+
+public enum PersianDayOfWeek
 {
-	public enum PersianDayOfWeek
-	{
-        /// <summary>
-        /// شنبه
-        /// </summary>
-        Saturday = 0,
+    /// <summary>
+    /// شنبه
+    /// </summary>
+    Saturday = 0,
 
-        /// <summary>
-        /// یکشنبه
-        /// </summary>
-		Sunday = 1,
+    /// <summary>
+    /// یکشنبه
+    /// </summary>
+    Sunday = 1,
 
-        /// <summary>
-        /// دو شنبه
-        /// </summary>
-		Monday = 2,
+    /// <summary>
+    /// دو شنبه
+    /// </summary>
+    Monday = 2,
 
-        /// <summary>
-        /// سه شنبه
-        /// </summary>
-		Tuesday = 3,
+    /// <summary>
+    /// سه شنبه
+    /// </summary>
+    Tuesday = 3,
 
-        /// <summary>
-        /// چهار شنبه
-        /// </summary>
-		Wednesday = 4,
+    /// <summary>
+    /// چهار شنبه
+    /// </summary>
+    Wednesday = 4,
 
-        /// <summary>
-        /// پنج شنبه
-        /// </summary>
-		Thursday = 5,
+    /// <summary>
+    /// پنج شنبه
+    /// </summary>
+    Thursday = 5,
 
-        /// <summary>
-        /// جمعه
-        /// </summary>
-		Friday = 6
-    }
+    /// <summary>
+    /// جمعه
+    /// </summary>
+    Friday = 6
 }

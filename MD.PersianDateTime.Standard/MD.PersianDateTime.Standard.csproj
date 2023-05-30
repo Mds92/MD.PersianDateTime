@@ -1,44 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>A C# library to use PersianCalendar as easy as DateTime</Description>
-    <Copyright>Mohammad Dayyan - @mdssoft</Copyright>
-    <PackageLicense>https://licenses.nuget.org/MIT</PackageLicense>
-    <PackageProjectUrl>https://github.com/Mds92/MD.PersianDateTime</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Mds92/MD.PersianDateTime</RepositoryUrl>
-    <PackageTags>c# .net-standard persiandatetime datetime calendar</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.4.1</AssemblyVersion>
-    <FileVersion>2.4.1</FileVersion>
-    <Version>2.4.1</Version>
-    <LangVersion>latest</LangVersion>
-    <LangVersion>8</LangVersion>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIcon>PersianDateTimePng.png</PackageIcon>
-    <PackageIconUrl />
-    <PackageLicenseExpression></PackageLicenseExpression>
-    <Company>Mohammad Dayyan</Company>
-    <Authors>Mohammad Dayyan</Authors>
-    <PackageReleaseNotes>Add GetPersianDateOfLastDayOfYear</PackageReleaseNotes>
-    <Title>MD.PersianDateTime.Standard</Title>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\MD.PersianDateTime.Standard.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Update="PersianDateTime.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Icon/PersianDateTimePng.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
 
 </Project>

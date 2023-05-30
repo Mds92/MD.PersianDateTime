@@ -1,14 +1,14 @@
 ﻿namespace MD.PersianDateTime
 {
-	/// <summary>
-	/// تاریخ هجری قمری
-	/// </summary>
-	public struct HijriDateTime
-	{
-	    /// <summary>
-	    /// سال قمری
-	    /// </summary>
-	    public int Year { get; set; }
+    /// <summary>
+    /// تاریخ هجری قمری
+    /// </summary>
+    public struct HijriDateTime
+    {
+        /// <summary>
+        /// سال قمری
+        /// </summary>
+        public int Year { get; set; }
 
         /// <summary>
         /// ماه قمری
