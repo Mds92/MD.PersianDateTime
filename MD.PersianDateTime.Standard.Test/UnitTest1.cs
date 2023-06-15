@@ -66,5 +66,26 @@ namespace MD.PersianDateTime.Standard.Test
             Assert.Equal(persianDateSaturday4.AddDays(6).GetFirstDayOfWeek(), persianDateSaturday4);
             Assert.Equal(persianDateSaturday4.GetFirstDayOfWeek(), persianDateSaturday4);
         }
+
+        [Fact]
+        public void ToTimeShort1()
+        {
+            var date = new PersianDateTime(1399, 5, 1, 12, 20, 33);
+            Assert.Equal(1220, date.ToTimeShort());
+        }
+
+        [Fact]
+        public void ToTimeShort2()
+        {
+            var date = new PersianDateTime(1402, 3, 22, 9, 8, 5);
+            Assert.Equal(908, date.ToTimeShort());
+        }
+
+        [Fact]
+        public void ToTimeShort3()
+        {
+            var date = new PersianDateTime(1402, 3, 22, 9, 22, 15);
+            Assert.Equal(922, date.ToTimeShort());
+        }
     }
 }
