@@ -14,10 +14,8 @@
     <Version>2.5.0</Version>
     <LangVersion>latest</LangVersion>
     <LangVersion>8</LangVersion>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageIcon>PersianDateTimePng.png</PackageIcon>
     <PackageIconUrl />
-    <PackageLicenseExpression></PackageLicenseExpression>
     <Company>Mohammad Dayyan</Company>
     <Authors>Mohammad Dayyan</Authors>
     <PackageReleaseNotes>Add GetPersianDateOfLastDayOfYear</PackageReleaseNotes>
