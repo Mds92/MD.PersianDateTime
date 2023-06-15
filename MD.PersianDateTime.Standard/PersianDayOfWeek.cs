@@ -1,5 +1,8 @@
 ﻿namespace MD.PersianDateTime.Standard
 {
+    /// <summary>
+    /// روزهای شمسی هفته
+    /// </summary>
 	public enum PersianDayOfWeek
 	{
         /// <summary>

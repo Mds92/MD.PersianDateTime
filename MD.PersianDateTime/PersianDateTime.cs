@@ -427,7 +427,6 @@ namespace MD.PersianDateTime
         {
             get
             {
-                //if (_dateTime <= DateTime.MinValue) return null;
                 var result = $"{Hour:00}:{Minute:00}:{Second:00}:{Millisecond:000}";
                 if (!PersianNumber) return result;
                 return ToPersianNumber(result);
@@ -443,7 +442,6 @@ namespace MD.PersianDateTime
         {
             get
             {
-                //if (_dateTime <= DateTime.MinValue) return null;
                 var result = $"ساعت {ShortHour:00}:{Minute:00}:{Second:00}:{Millisecond:000} {GetPersianAmPm}";
                 if (!PersianNumber) return result;
                 return ToPersianNumber(result);
@@ -459,7 +457,6 @@ namespace MD.PersianDateTime
         {
             get
             {
-                //if (_dateTime <= DateTime.MinValue) return null;
                 var result = $"{ShortHour:00}:{Minute:00}:{Second:00} {GetPersianAmPm}";
                 if (!PersianNumber) return result;
                 return ToPersianNumber(result);
@@ -1176,7 +1173,6 @@ namespace MD.PersianDateTime
         /// </summary>
         public string ToShortDateString()
         {
-            //if (_dateTime <= DateTime.MinValue) return null;
             var result = $"{Year:0000}/{Month:00}/{Day:00}";
             if (!PersianNumber) return result;
             return ToPersianNumber(result);
@@ -1189,7 +1185,6 @@ namespace MD.PersianDateTime
         /// </summary>
         public string ToShortDate1String()
         {
-            //if (_dateTime <= DateTime.MinValue) return null;
             var result = $"{GetShortDayOfWeekName} {Day:00} {GetLongMonthName} {GetShortYear}";
             if (!PersianNumber) return result;
             return ToPersianNumber(result);
@@ -1202,8 +1197,7 @@ namespace MD.PersianDateTime
         /// </summary>
         public int ToShortDateInt()
         {
-            var result = $"{Year:0000}{Month:00}{Day:00}";
-            return int.Parse(result);
+            return int.Parse($"{Year:0000}{Month:00}{Day:00}");
         }
 
         /// <summary>
@@ -1213,8 +1207,7 @@ namespace MD.PersianDateTime
         /// </summary>
         public long ToLongDateTimeInt()
         {
-            var result = $"{Year:0000}{Month:00}{Day:00}{Hour:00}{Minute:00}{Second:00}{Millisecond:000}";
-            return long.Parse(result);
+            return long.Parse($"{Year:0000}{Month:00}{Day:00}{Hour:00}{Minute:00}{Second:00}{Millisecond:000}");
         }
 
         /// <summary>
@@ -1226,8 +1219,7 @@ namespace MD.PersianDateTime
         /// </summary>
         public int ToTimeInt()
         {
-            var result = $"{Hour:00}{Minute:00}{Second:00}";
-            return int.Parse(result);
+            return int.Parse($"{Hour:00}{Minute:00}{Second:00}");
         }
 
         /// <summary>
@@ -1237,10 +1229,9 @@ namespace MD.PersianDateTime
         /// <para />
         /// که به معنای ساعت 12 و 34 دقیقه می باشد
         /// </summary>
-        public int ToTimeInt1()
+        public short ToTimeShort()
         {
-            var result = $"{Hour:00}{Minute:00}";
-            return int.Parse(result);
+            return short.Parse($"{Hour:00}{Minute:00}");
         }
 
         /// <summary>
@@ -1250,7 +1241,6 @@ namespace MD.PersianDateTime
         /// </summary>
         public string ToLongDateString()
         {
-            //if (_dateTime <= DateTime.MinValue) return null;
             var result = $"{GetLongDayOfWeekName}، {Day:00} {GetLongMonthName} {Year:0000}";
             if (!PersianNumber) return result;
             return ToPersianNumber(result);
@@ -1263,9 +1253,7 @@ namespace MD.PersianDateTime
         /// </summary>
         public string ToLongDateTimeString()
         {
-            //if (_dateTime <= DateTime.MinValue) return null;
-            var result =
-                $"{GetLongDayOfWeekName}، {Day:00} {GetLongMonthName} {Year:0000} ساعت {Hour:00}:{Minute:00}:{Second:00}";
+            var result = $"{GetLongDayOfWeekName}، {Day:00} {GetLongMonthName} {Year:0000} ساعت {Hour:00}:{Minute:00}:{Second:00}";
             if (!PersianNumber) return result;
             return ToPersianNumber(result);
         }
@@ -1277,7 +1265,6 @@ namespace MD.PersianDateTime
         /// </summary>
         public string ToShortDateTimeString()
         {
-            //if (_dateTime <= DateTime.MinValue) return null;
             var result = $"{GetLongDayOfWeekName}، {Day:00} {GetLongMonthName} {Year:0000} {Hour:00}:{Minute:00}";
             if (!PersianNumber) return result;
             return ToPersianNumber(result);
@@ -1290,7 +1277,6 @@ namespace MD.PersianDateTime
         /// </summary>
         public string ToShortTimeString()
         {
-            //if (_dateTime <= DateTime.MinValue) return null;
             var result = $"{ShortHour:00}:{Minute:00} {GetPersianAmPm}";
             if (!PersianNumber) return result;
             return ToPersianNumber(result);
@@ -1303,7 +1289,6 @@ namespace MD.PersianDateTime
         /// </summary>
         public string ToLongTimeString()
         {
-            //if (_dateTime <= DateTime.MinValue) return null;
             var result = $"{Hour:00}:{Minute:00}:{Second:00}";
             if (!PersianNumber) return result;
             return ToPersianNumber(result);
@@ -1316,8 +1301,6 @@ namespace MD.PersianDateTime
         /// </summary>
         public string ElapsedTime()
         {
-            //if (_dateTime <= DateTime.MinValue) return null;
-
             var persianDateTimeNow = new PersianDateTime(DateTime.Now);
             var timeSpan = persianDateTimeNow - _dateTime;
             if (timeSpan.TotalDays > 90)
