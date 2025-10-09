@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
@@ -289,7 +288,7 @@ namespace MD.PersianDateTime
         /// <summary>
         /// قبل از ظهر، بعد از ظهر
         /// </summary>
-        private AmPmEnum PersianAmPm => _dateTime.ToString("tt") == "PM" ? AmPmEnum.PM : AmPmEnum.AM;
+        private AmPmEnum PersianAmPm => _dateTime.ToString("tt", CultureInfo.InvariantCulture) == "PM" ? AmPmEnum.PM : AmPmEnum.AM;
 
         /// <summary>
 		/// قبل از ظهر، بعد از ظهر به شکل مخفف . کوتاه
@@ -584,7 +583,6 @@ namespace MD.PersianDateTime
 
         #region Types
 
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
         private enum AmPmEnum
         {
             AM = 0,
@@ -592,8 +590,6 @@ namespace MD.PersianDateTime
             None = 2
         }
 
-        [SuppressMessage("ReSharper", "IdentifierTypo")]
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         private enum PersianDateTimeMonthEnum
         {
             فروردین = 1,
@@ -610,8 +606,6 @@ namespace MD.PersianDateTime
             اسفند = 12
         }
 
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
-        [SuppressMessage("ReSharper", "IdentifierTypo")]
         private struct PersianWeekDaysStruct
         {
             public static KeyValuePair<int, string> شنبه => new KeyValuePair<int, string>((int)DayOfWeek.Saturday, "شنبه");
@@ -882,7 +876,7 @@ namespace MD.PersianDateTime
                 {
                     var itemValueInString = item.ToString();
                     if (!persianDateTimeInString.Contains(itemValueInString)) continue;
-                    month = ((int)item).ToString();
+                    month = ((int)item).ToString(CultureInfo.InvariantCulture);
                     break;
                 }
 
@@ -970,7 +964,7 @@ namespace MD.PersianDateTime
         /// </summary>
         public static PersianDateTime Parse(int numericPersianDate)
         {
-            if (numericPersianDate.ToString().Length != 8)
+            if (numericPersianDate.ToString(CultureInfo.InvariantCulture).Length != 8)
                 throw new InvalidCastException("Numeric persian date must have a format like 13920101.");
             var year = numericPersianDate / 10000;
             var day = numericPersianDate % 100;
@@ -1003,7 +997,7 @@ namespace MD.PersianDateTime
         /// </summary>
         public static PersianDateTime Parse(long numericPersianDateTime)
         {
-            if (numericPersianDateTime.ToString().Length != 17)
+            if (numericPersianDateTime.ToString(CultureInfo.InvariantCulture).Length != 17)
                 throw new InvalidCastException("Numeric persian date time must have a format like 1396122310223246.");
             var year = numericPersianDateTime / 10000000000000;
             var month = numericPersianDateTime / 100000000000 % 100;
