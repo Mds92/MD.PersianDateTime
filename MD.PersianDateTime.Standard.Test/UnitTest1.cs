@@ -90,32 +90,55 @@ public class UnitTest1
         Assert.Equal(922, date.ToTimeShort());
     }
 
-    [Fact]
-    [UseCulture("fa-IR")]
-    public void TestPersianCulture1()
+    [Theory]
+    [InlineData("fr-CA")]
+    [InlineData("fa-IR")]
+    [InlineData("en-US")]
+    [InlineData("ar-SA")]
+    [InlineData("ar-LB")]
+    public void TestPersianCulture1(string cultureName)
     {
-        var persianDate = new PersianDateTime(1404, 07, 20);
-        var result = persianDate.ToString("yyyy");
-        Assert.Contains("1404", result);
+        using (new CultureScope(cultureName))
+        {
+            var persianDate = PersianDateTime.Parse("1404/07/20");
+            Assert.Equal("1404", persianDate.ToString("yyyy"));
+            Assert.Equal("7", persianDate.ToString("M"));
+            Assert.Equal("07", persianDate.ToString("MM"));
+            Assert.Equal("20", persianDate.ToString("dd"));
+        }
     }
 
-    [Fact]
-    [UseCulture("fa-IR")]
-    public void TestPersianCulture2()
+    [Theory]
+    [InlineData("fr-CA")]
+    [InlineData("fa-IR")]
+    [InlineData("en-US")]
+    [InlineData("ar-SA")]
+    [InlineData("ar-LB")]
+    public void TestPersianCulture2(string cultureName)
     {
-        var persianDate = new PersianDateTime(1404, 07, 20, 1, 1, 1, 123);
-        var result = persianDate.ToString("fff");
-        Assert.Contains("123", result);
+        using (new CultureScope(cultureName))
+        {
+            var persianDate = new PersianDateTime(1404, 07, 20, 1, 1, 1, 123);
+            var result = persianDate.ToString("fff");
+            Assert.Contains("123", result);
+        }
     }
 
-    [Fact]
-    [UseCulture("fa-IR")]
-    public void TestPersianCulture3()
+    [Theory]
+    [InlineData("fr-CA")]
+    [InlineData("fa-IR")]
+    [InlineData("en-US")]
+    [InlineData("ar-SA")]
+    [InlineData("ar-LB")]
+    public void TestPersianCulture3(string cultureName)
     {
-        var persianDate = new PersianDateTime(new DateTime(2025, 10, 09));
-        Assert.Equal(1404, persianDate.Year);
-        Assert.Equal(7, persianDate.Month);
-        Assert.Equal(17, persianDate.Day);
+        using (new CultureScope(cultureName))
+        {
+            var persianDate = new PersianDateTime(new DateTime(2025, 10, 09));
+            Assert.Equal(1404, persianDate.Year);
+            Assert.Equal(7, persianDate.Month);
+            Assert.Equal(17, persianDate.Day);
+        }
     }
 
     [Theory]
@@ -150,6 +173,61 @@ public class UnitTest1
             Assert.Equal(2025, dateTime.Year);
             Assert.Equal(10, dateTime.Month);
             Assert.Equal(09, dateTime.Day);
+        }
+    }
+
+    [Theory]
+    [InlineData("fr-CA")]
+    [InlineData("fa-IR")]
+    [InlineData("en-US")]
+    [InlineData("ar-SA")]
+    [InlineData("ar-LB")]
+    public void TestPersianCulture6(string cultureName)
+    {
+        using (new CultureScope(cultureName))
+        {
+            var persianDate = new PersianDateTime(1404, 07, 20, 1, 1, 1, 123);
+            var result1 = persianDate.ToString("yyyy", CultureInfo.GetCultureInfo(cultureName));
+            var result2 = persianDate.ToString("yyyy", CultureInfo.InvariantCulture);
+            var result3 = persianDate.ToString("yyyy");
+            Assert.Equal("1404", result1);
+            Assert.Equal("1404", result2);
+            Assert.Equal("1404", result3);
+        }
+    }
+
+    [Theory]
+    [InlineData("fr-CA")]
+    [InlineData("fa-IR")]
+    [InlineData("en-US")]
+    [InlineData("ar-SA")]
+    [InlineData("ar-LB")]
+    public void TestPersianCulture7(string cultureName)
+    {
+        using (new CultureScope(cultureName))
+        {
+            var persianDate = new PersianDateTime(1404, 07, 20, 1, 1, 1, 123);
+            Assert.Equal(1404, persianDate.Year);
+            Assert.Equal(7, persianDate.Month);
+            Assert.Equal(20, persianDate.Day);
+        }
+    }
+
+    [Theory]
+    [InlineData("fr-CA")]
+    [InlineData("fa-IR")]
+    [InlineData("en-US")]
+    [InlineData("ar-SA")]
+    [InlineData("ar-LB")]
+    public void TestPersianCulture8(string cultureName)
+    {
+        using (new CultureScope(cultureName))
+        {
+            var persianDate = PersianDateTime.Parse("1404-07-20");
+            Assert.Equal("1404", persianDate.ToString("yyyy"));
+            Assert.Equal("7", persianDate.ToString("M"));
+            Assert.Equal("07", persianDate.ToString("MM"));
+            Assert.Equal("20", persianDate.ToString("dd"));
         }
     }
 
