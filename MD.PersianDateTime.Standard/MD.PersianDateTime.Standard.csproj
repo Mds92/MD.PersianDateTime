@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>A C# library to use PersianCalendar as easy as DateTime</Description>
-    <Copyright>Mohammad Dayyan - @mdssoft</Copyright>
+    <Copyright>Mohammad Dayyan - @mds1401</Copyright>
     <PackageLicense>https://licenses.nuget.org/MIT</PackageLicense>
     <PackageProjectUrl>https://github.com/Mds92/MD.PersianDateTime</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Mds92/MD.PersianDateTime</RepositoryUrl>
@@ -12,13 +12,14 @@
     <AssemblyVersion>2.6.0</AssemblyVersion>
     <FileVersion>2.6.0</FileVersion>
     <Version>2.6.0</Version>
-    <PackageIcon>PersianDateTimePng.png</PackageIcon>
+    <PackageIcon>PersianDateTime.png</PackageIcon>
     <PackageIconUrl />
     <Company>Mohammad Dayyan</Company>
     <Authors>Mohammad Dayyan</Authors>
-    <PackageReleaseNotes>Add GetPersianDateOfLastDayOfYear</PackageReleaseNotes>
+    <PackageReleaseNotes>Culture Improvements</PackageReleaseNotes>
     <Title>MD.PersianDateTime.Standard</Title>
     <LangVersion>preview</LangVersion>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -32,9 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Icon/PersianDateTimePng.png">
+    <None Include="Icon\PersianDateTime.png">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
